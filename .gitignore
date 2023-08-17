@@ -1,0 +1,49 @@
+**/generated_plugin_registrant.*
+/thrurula/linux/flutter/generated_plugin_registrant.cc
+# macOS system files
+.DS_Store
+
+# Flutter-specific files
+**/build/
+**/ios/Flutter/.last_build_id
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/App.framework
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/flutter_export_environment.sh
+
+# Android build files
+**/android/build/
+**/android/gradle/
+**/android/local.properties
+**/android/.gradle/
+**/android/gradlew
+**/android/gradlew.bat
+**/android/captures/
+
+# iOS build files
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Runner.xcworkspace
+**/ios/.generated/
+
+# Web build files
+**/web/packages/
+**/web/assets/
+**/web/*.dart.js
+**/web/*.js
+
+
+# Android Studio
+*.iml
+.idea/
+*.ipr
+*.iws
+.idea/workspace.xml
+.idea/tasks.xml
+*.gradle
+/captures/
+/gradle/
+
+# Thurula specific files
+/thurula/android/
+/thurula/windows/
