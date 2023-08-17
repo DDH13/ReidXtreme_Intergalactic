@@ -6,7 +6,7 @@ using MongoDB.Driver;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddSingleton<UserService>();
 
 builder.Services.Configure<AtlasDbSettings>(
     builder.Configuration.GetSection(nameof(AtlasDbSettings)));

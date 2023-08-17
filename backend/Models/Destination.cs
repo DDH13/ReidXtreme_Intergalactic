@@ -12,7 +12,7 @@ public class Destination
     [BsonElement("name")] public string Name { get; set; } = string.Empty;
     [BsonElement("description")] public string Description { get; set; } = string.Empty;
     [BsonElement("image")] public string Image { get; set; } = string.Empty;
-    [BsonElement("distance")] public int Distance { get; set; } = 0;
+    [BsonElement("docks")] public List<string> Docks { get; set; } = new List<string>();
 
 
 }

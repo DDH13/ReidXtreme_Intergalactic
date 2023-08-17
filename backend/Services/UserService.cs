@@ -3,7 +3,7 @@ using MongoDB.Driver;
 
 namespace intergalactica.Services;
 
-public class UserService : IUserService
+public class UserService
 {
     private readonly IMongoCollection<User> _users;
 
