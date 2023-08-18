@@ -11,7 +11,7 @@ public class Distance
 
     [BsonElement("source")] public ObjectId Source { get; set; } = new ObjectId(string.Empty);
     [BsonElement("destination")] public ObjectId Destination { get; set; } = new ObjectId(string.Empty);
-    [BsonElement("distance")] public float DistanceInKm { get; set; } = 0;
-
+    //Distance in light minutes
+    [BsonElement("distance")] public float DistanceLm { get; set; } = 0;
 
 }
