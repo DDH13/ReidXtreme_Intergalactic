@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,25 +15,119 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a blue toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.black,
+          primary: Colors.white,
+          secondary: const Color(0xffCBCBCB),
+          background: Colors.black,
+          surface: Colors.black,
+          onSurface: const Color(0xffCBCBCB),
+          error: const Color(0xffFF5A5A),
+          onError: Colors.white,
+          brightness: Brightness.dark,
+        ),
+
+        // app bar
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          titleTextStyle: TextStyle(
+              fontFamily: 'Space Grotesk',
+              fontSize: 24,
+              fontWeight: FontWeight.bold),
+          toolbarHeight: 100,
+        ),
+
+        // typography
+        textTheme: const TextTheme(
+          headlineLarge: TextStyle(
+            fontFamily: 'Space Grotesk',
+            fontSize: 32,
+            fontWeight: FontWeight.bold,
+          ),
+          headlineMedium: TextStyle(
+            fontFamily: 'Space Grotesk',
+            fontSize: 26,
+            fontWeight: FontWeight.bold,
+          ),
+          bodyLarge: TextStyle(
+            fontFamily: 'Saira',
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+          bodyMedium: TextStyle(fontFamily: 'Saira', fontSize: 16),
+          bodySmall: TextStyle(
+              fontFamily: 'Saira', fontSize: 14, color: Color(0xffCBCBCB)),
+        ),
+
+        // elevated button styling
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+            // transparent background color
+            backgroundColor: MaterialStateProperty.all<Color>(
+              Theme.of(context).colorScheme.primary.withOpacity(0),
+            ),
+            // border colour white, stroke width 0.5
+            side: MaterialStateProperty.all<BorderSide>(
+              const BorderSide(
+                color: Colors.white,
+                width: 0.7,
+              ),
+            ),
+            foregroundColor: MaterialStateProperty.all<Color>(
+              Theme.of(context).colorScheme.onPrimary,
+            ),
+            padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+              const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 8,
+              ),
+            ),
+            shape: MaterialStateProperty.all<OutlinedBorder>(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+              ),
+            ),
+          ),
+        ),
+
+        floatingActionButtonTheme: (
+            FloatingActionButtonThemeData(
+              backgroundColor: Colors.white,
+              foregroundColor: Colors.black,
+              elevation: 0,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+            side: const BorderSide(
+            color: Colors.white,
+            width: 0.7,
+            ),
+              ),
+            )
+        ),
+
+
+        // cards
+        cardTheme: CardTheme(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          elevation: 0,
+          margin: const EdgeInsets.all(10),
+          color: const Color(0xff1F2933).withOpacity(0.6),
+
+        ),
+
+
+
+      //   bottom app bar
+        bottomAppBarTheme: const BottomAppBarTheme(
+          color: Colors.transparent,
+          elevation: 0,
+        ),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Available Shuttles'),
     );
   }
 }
@@ -39,19 +135,27 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
+}
+
+// background image
+class BackgroundImage extends StatelessWidget {
+  const BackgroundImage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/images/backgrounds/star.png'),
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
+  }
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -59,67 +163,109 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
       _counter++;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
+        //   add notification icon
+
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.notifications_outlined),
+          ),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.menu))
+        ],
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/backgrounds/star.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                'You have pushed the button this many times:',
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
+              Text(
+                '$_counter',
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+
+              //   button
+              ElevatedButton(
+                onPressed: () {},
+                child: const Text('MORE >'),
+              ),
+
+              //   card
+              const Card(
+                child: Column(
+                  children: [
+                    Text('Card Title'),
+                    Text('Card Subtitle'),
+                    //   card inside card
+                    Card(
+                      child: Column(
+                        children: [
+                          Text('Card Title'),
+                          Text('Card Subtitle'),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
+
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
+
+      //   add button
+      bottomNavigationBar: BottomAppBar(
+          // background colour transparent
+          color: Colors.transparent,
+          //   frosted glass background
+          child: ClipRect(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+                child: Container(
+                  height: 60,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.1),
+                  ),
+                  child: const Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          'VIEW PACKAGES'
+                        ),
+                        Text(
+                            'BOOK A TRIP'
+                        ),
+                      ],
+                    ),
+                  ),
+              ),
+      ))),
     );
   }
 }
