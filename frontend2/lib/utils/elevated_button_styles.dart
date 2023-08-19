@@ -5,7 +5,7 @@ class CustomElevatedButtonTheme extends ElevatedButtonThemeData {
     return ElevatedButtonThemeData(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.resolveWith<Color>(
-          (states) {
+              (states) {
             if (states.contains(MaterialState.pressed)) {
               return Colors.red; // Change to desired pressed color
             }
@@ -13,7 +13,7 @@ class CustomElevatedButtonTheme extends ElevatedButtonThemeData {
           },
         ),
         side: MaterialStateProperty.all<BorderSide>(
-          const BorderSide(
+          BorderSide(
             color: Colors.white,
             width: 0.7,
           ),

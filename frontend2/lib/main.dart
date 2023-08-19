@@ -196,10 +196,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   //   button
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => FindShuttleView()));
+                      // Navigator.push(
+                      //     // context,
+                      //     // // MaterialPageRoute(
+                      //     // //     builder: (context) => FindShuttleView()));
                     },
                     child: const Text('MORE >'),
                   ),
@@ -274,7 +274,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                   child: Align(
                                     alignment: Alignment.bottomRight,
                                     child: ElevatedButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  FindShuttleView()),
+                                        );
+                                      },
                                       child: const Text('BOOK >'),
                                     ),
                                   ),
@@ -329,7 +336,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                   child: Align(
                                     alignment: Alignment.bottomRight,
                                     child: ElevatedButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  FindShuttleView()),
+                                        );
+                                      },
                                       child: const Text('BOOK >'),
                                     ),
                                   ),
@@ -384,11 +398,18 @@ class _MyHomePageState extends State<MyHomePage> {
                                   child: Align(
                                     alignment: Alignment.bottomRight,
                                     child: ElevatedButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  FindShuttleView()),
+                                        );
+                                      },
                                       child: const Text('BOOK >'),
                                     ),
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ),

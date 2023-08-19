@@ -19,9 +19,10 @@ class _FindShuttleViewState extends State<FindShuttleView>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: CustomAppBar(title: const Text('Find Shuttle')));
+    return Scaffold(appBar: CustomAppBar(title: 'Find Shuttle')); // Pass a String here
   }
 }
+
 
 // class Month1 extends StatelessWidget {
 //   Month1({Key? key}) : super(key: key);
