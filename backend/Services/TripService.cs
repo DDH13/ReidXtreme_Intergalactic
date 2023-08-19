@@ -41,26 +41,13 @@ public class TripService
         return _trips.Find(filter).ToList();
     }
 
-    //get trip based on arrival date range
-    public List<Trip> GetByArrivalDate(DateTime arrival1, DateTime arrival2)
+    //get trip for a given arrival,source and destination
+    public List<Trip> GetByArrivalSourceDestination(DateTime arrival, string source, string destination)
     {
         //ignore year and compare only month and day
         var filter = Builders<Trip>.Filter.Where(trip =>
-            trip.Arrival.Month >= arrival1.Month && trip.Arrival.Month <= arrival2.Month &&
-            trip.Arrival.Day >= arrival1.Day && trip.Arrival.Day <= arrival2.Day);
-        return _trips.Find(filter).ToList();
-    }
-
-    //get trip based on departure and arrival date range
-    public List<Trip> GetByDepartureAndArrival(DateTime arrival1, DateTime arrival2, DateTime departure1,
-        DateTime departure2)
-    {
-        //ignore year and compare only month and day
-        var filter = Builders<Trip>.Filter.Where(trip =>
-            trip.Arrival.Month >= arrival1.Month && trip.Arrival.Month <= arrival2.Month &&
-            trip.Arrival.Day >= arrival1.Day && trip.Arrival.Day <= arrival2.Day &&
-            trip.Departure.Month >= departure1.Month && trip.Departure.Month <= departure2.Month &&
-            trip.Departure.Day >= departure1.Day && trip.Departure.Day <= departure2.Day);
+            trip.Arrival.Month == arrival.Month && trip.Arrival.Day == arrival.Day &&
+            trip.Source == source && trip.Destination == destination);
         return _trips.Find(filter).ToList();
     }
 
@@ -75,4 +62,16 @@ public class TripService
         var ticketPrice = trip.TicketPrice;
         return adults * ticketPrice + children * ticketPrice * 0.5f;
     }
+
+    //get trip for a given departure,source and destination\
+    public List<Trip> GetByDepartureSourceDestination(DateTime departure, string source, string destination)
+    {
+        //ignore year and compare only month and day
+        var filter = Builders<Trip>.Filter.Where(trip =>
+            trip.Departure.Month == departure.Month && trip.Departure.Day == departure.Day &&
+            trip.Source == source && trip.Destination == destination);
+        return _trips.Find(filter).ToList();
+
+    }
+
 }
