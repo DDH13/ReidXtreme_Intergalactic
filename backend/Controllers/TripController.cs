@@ -129,4 +129,11 @@ public class TripController : ControllerBase
         var distance = _distanceService.GetDistanceBetween(source, destination);
         return distance.DistanceLm;
     }
+
+    [HttpPost]
+    public ActionResult<Trip> Create(Trip trip)
+    {
+        _tripService.Create(trip);
+        return NoContent();
+    }
 }
