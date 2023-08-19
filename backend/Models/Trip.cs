@@ -10,15 +10,15 @@ public class Trip
     public string Id { get; set; } = string.Empty;
 
     [BsonElement("source")]
-    public ObjectId Source { get; set; } = new ObjectId(string.Empty);
+    public string Source { get; set; } = string.Empty;
     [BsonElement("destination")]
-    public ObjectId Destination { get; set; } = new ObjectId(string.Empty);
+    public string Destination { get; set; } = string.Empty;
     [BsonElement("source_dock")]
     public String SourceDock { get; set; } = string.Empty;
     [BsonElement("destination_dock")]
     public String DestinationDock { get; set; } = string.Empty;
     [BsonElement("shuttle")]
-    public ObjectId Shuttle { get; set; } = new ObjectId(string.Empty);
+    public string Shuttle { get; set; } = string.Empty;
     [BsonElement("ticket_price")]
     public float TicketPrice { get; set; } = 0;
 

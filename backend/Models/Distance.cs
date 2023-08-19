@@ -9,8 +9,8 @@ public class Distance
     [BsonRepresentation(BsonType.ObjectId)]
     public string Id { get; set; } = string.Empty;
 
-    [BsonElement("source")] public ObjectId Source { get; set; } = new ObjectId(string.Empty);
-    [BsonElement("destination")] public ObjectId Destination { get; set; } = new ObjectId(string.Empty);
+    [BsonElement("source")] public string Source { get; set; } = string.Empty;
+    [BsonElement("destination")] public string Destination { get; set; } = string.Empty;
     //Distance in light minutes
     [BsonElement("distance")] public float DistanceLm { get; set; } = 0;
 
