@@ -231,7 +231,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           // width
                           child: SizedBox(
-                            width: 250,
+                            width: 200,
                             child: Column(
                               children: [
                                 const Image(
@@ -282,7 +282,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           // width
                           child: SizedBox(
-                            width: 250,
+                            width: 200,
                             child: Column(
                               children: [
                                 const Image(
@@ -333,7 +333,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           // width
                           child: SizedBox(
-                            width: 250,
+                            width: 200,
                             child: Column(
                               children: [
                                 const Image(
@@ -341,7 +341,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       'assets/images/travels/pluto-blue-glacier.jpg'),
                                 ),
                                 Padding(
-                                    padding: EdgeInsets.only(top:16, left:20, bottom:0, right:0),
+                                    padding: const EdgeInsets.only(top:16, left:20, bottom:0, right:0),
                                     child: Align(
                                       alignment: Alignment.bottomLeft,
                                       child: Text(
@@ -351,7 +351,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     )
                                 ),
                                 Padding(
-                                    padding: EdgeInsets.only(top:0, left:20, bottom:0, right:0),
+                                    padding: const EdgeInsets.only(top:0, left:20, bottom:0, right:0),
                                     child: Align(
                                       alignment: Alignment.bottomLeft,
                                       child: Text(
@@ -361,7 +361,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     )
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(right: 10, bottom: 10, top:0),
+                                  padding: const EdgeInsets.only(right: 10, bottom: 10, top:0),
                                   child: Align(
                                     alignment: Alignment.bottomRight,
                                     child: ElevatedButton(
@@ -393,16 +393,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           // width
                           child: SizedBox(
-                            width: 250,
-                            child: Column(
+                            width: 200,
+                            child: Stack (
                               children: [
                                 Image(
                                   image: AssetImage(
-                                      'assets/images/travels/mars-olympus.jpg'),
+                                      'assets/images/events/eclipse-viewing.jpg'),
+                                  fit: BoxFit.fill,
                                 ),
-                                Padding(
-                                    padding: EdgeInsets.all(16),
-                                    child: Text('Card Title'))
                               ],
                             ),
                           ),
@@ -416,39 +414,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           // width
                           child: SizedBox(
-                            width: 250,
+                            width: 200,
                             child: Column(
                               children: [
                                 Image(
                                   image: AssetImage(
-                                      'assets/images/travels/mercury-north.jpg'),
+                                      'assets/images/events/party-venus.jpg'),
+                                  fit: BoxFit.fill,
                                 ),
-                                Padding(
-                                    padding: EdgeInsets.all(16),
-                                    child: Text('Card Title'))
-                              ],
-                            ),
-                          ),
-                        ),
-                        Card(
-                          clipBehavior: Clip.antiAlias,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(16),
-                            ),
-                          ),
-                          // width
-                          child: SizedBox(
-                            width: 250,
-                            child: Column(
-                              children: [
-                                Image(
-                                  image: AssetImage(
-                                      'assets/images/travels/pluto-blue-glacier.jpg'),
-                                ),
-                                Padding(
-                                    padding: EdgeInsets.all(16),
-                                    child: Text('Card Title'))
                               ],
                             ),
                           ),
@@ -462,34 +435,35 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ]),
       ),
+
       //   bottom navigation bar
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.home),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.search),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.add),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.notifications),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.person),
-            ),
-          ],
-        ),
-      ),
+      // bottomNavigationBar: BottomAppBar(
+      //   child: Row(
+      //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+      //     children: [
+      //       IconButton(
+      //         onPressed: () {},
+      //         icon: const Icon(Icons.home),
+      //       ),
+      //       IconButton(
+      //         onPressed: () {},
+      //         icon: const Icon(Icons.search),
+      //       ),
+      //       IconButton(
+      //         onPressed: () {},
+      //         icon: const Icon(Icons.add),
+      //       ),
+      //       IconButton(
+      //         onPressed: () {},
+      //         icon: const Icon(Icons.notifications),
+      //       ),
+      //       IconButton(
+      //         onPressed: () {},
+      //         icon: const Icon(Icons.person),
+      //       ),
+      //     ],
+      //   ),
+      // ),
     );
   }
 }
