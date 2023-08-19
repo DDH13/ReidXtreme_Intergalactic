@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-// import 'package:provider/provider.dart';
-
 abstract class ThemeText {
   static const TextStyle headlineLarge = TextStyle(
     fontFamily: 'Space Grotesk',

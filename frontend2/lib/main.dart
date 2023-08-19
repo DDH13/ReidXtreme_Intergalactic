@@ -1,7 +1,9 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:frontend2/views/booking_view/find_shuttle_view.dart';
+import 'package:frontend2/views/booking_view/payment_confirmation.dart';
+import '../../utils/appbar_styles.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -157,19 +159,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // app bar
-      appBar: AppBar(
-        title: Text(widget.title),
-        //   add notification icon
-
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.notifications_outlined),
-          ),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.menu))
-        ],
-      ),
+      appBar: CustomAppBar(
+          title: 'Home'),
       body: SingleChildScrollView(
         child: Column(children: [
           //   body
@@ -197,11 +188,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   ElevatedButton(
                     onPressed: () {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => FindShuttleView()));
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                PaymentConfirmation()),
+                      );
                     },
-                    child: const Text('MORE >'),
+                    child: const Text('PAY >'),
                   ),
 
                   //   card
@@ -274,7 +267,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                   child: Align(
                                     alignment: Alignment.bottomRight,
                                     child: ElevatedButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  FindShuttleView()),
+                                        );
+                                      },
                                       child: const Text('BOOK >'),
                                     ),
                                   ),
@@ -329,7 +329,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                   child: Align(
                                     alignment: Alignment.bottomRight,
                                     child: ElevatedButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  FindShuttleView()),
+                                        );
+                                      },
                                       child: const Text('BOOK >'),
                                     ),
                                   ),
@@ -384,11 +391,18 @@ class _MyHomePageState extends State<MyHomePage> {
                                   child: Align(
                                     alignment: Alignment.bottomRight,
                                     child: ElevatedButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  FindShuttleView()),
+                                        );
+                                      },
                                       child: const Text('BOOK >'),
                                     ),
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ),
