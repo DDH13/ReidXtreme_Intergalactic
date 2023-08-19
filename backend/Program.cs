@@ -54,9 +54,8 @@ builder.Services.AddSingleton<IAtlasDbSettings>(sp =>
     sp.GetRequiredService<IOptions<AtlasDbSettings>>().Value);
 builder.Services.AddSingleton<IMongoClient>(_ =>
     new MongoClient(builder.Configuration.GetValue<string>("AtlasDbSettings:ConnectionString")));
-
+builder.Services.AddControllers().AddNewtonsoftJson().AddXmlDataContractSerializerFormatters();
 builder.Services.AddHttpContextAccessor();
-builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

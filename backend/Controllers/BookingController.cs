@@ -35,7 +35,14 @@ public class BookingController : ControllerBase
         return NoContent();
     }
 
-    [HttpPatch]
+    [HttpDelete("{id}")]
+    public ActionResult DeleteBooking(string id)
+    {
+        _bookingService.Remove(id);
+        return NoContent();
+    }
+
+    [HttpPatch("{id}", Name = "PatchBooking")]
     public ActionResult PatchBooking(string id, [FromBody] JsonPatchDocument<Booking> patchDoc)
     {
         if (patchDoc == null)
@@ -49,10 +56,14 @@ public class BookingController : ControllerBase
             return NotFound();
         }
 
-        patchDoc.ApplyTo(booking);
+        patchDoc.ApplyTo(booking, ModelState);
 
         _bookingService.Update(id, booking);
-        return NoContent();
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+        return Ok();
     }
 
 }
