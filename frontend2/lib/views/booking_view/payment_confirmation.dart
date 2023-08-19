@@ -19,6 +19,6 @@ class _PaymentConfirmationState extends State<PaymentConfirmation>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: CustomAppBar(title: 'Payment Confirmation')); // Pass a String here
+    return Scaffold(appBar: CustomAppBar(title: 'Confirmed')); // Pass a String here
   }
 }
