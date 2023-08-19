@@ -23,6 +23,13 @@ class _CustomAppBarState extends State<CustomAppBar> {
           fontSize: 24,
           fontWeight: FontWeight.bold),
       toolbarHeight: 100,
+      actions: [
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.notifications_outlined),
+        ),
+        IconButton(onPressed: () {}, icon: const Icon(Icons.menu))
+      ],
     );
   }
 }
