@@ -39,4 +39,5 @@ public class ShuttleController : ControllerBase
         _shuttleService.Create(shuttle);
         return NoContent();
     }
+
 }

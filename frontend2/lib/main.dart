@@ -2,6 +2,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:frontend2/views/booking_view/find_shuttle_view.dart';
 import 'package:frontend2/views/booking_view/payment_confirmation.dart';
+import '../../utils/appbar_styles.dart';
+
 
 void main() {
   runApp(const MyApp());

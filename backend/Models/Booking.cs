@@ -22,6 +22,7 @@ public class Booking
 
     [BsonElement("user")] public string User { get; set; } = string.Empty;
     [BsonElement("shuttle")] public string Shuttle { get; set; } = string.Empty;
+
     [BsonElement("adults")] public int Adults { get; set; } = 0;
     [BsonElement("children")] public int Children { get; set; } = 0;
 

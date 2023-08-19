@@ -16,11 +16,13 @@ public class BookingController : ControllerBase
         _bookingService = bookingService;
     }
 
+
     [HttpGet("{id}", Name = "GetBooking")]
     public ActionResult<IEnumerable<Booking>> Get()
     {
         return Ok(_bookingService.Get());
     }
+
 
     [HttpGet("user/{userId}")]
     public ActionResult<IEnumerable<Booking>> GetUserBookings(string userId)

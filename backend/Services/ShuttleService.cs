@@ -27,4 +27,5 @@ public class ShuttleService
     }
 
     public void Create(Shuttle shuttle) => _shuttles.InsertOne(shuttle);
+
 }

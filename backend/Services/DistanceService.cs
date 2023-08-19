@@ -24,5 +24,4 @@ public class DistanceService
     }
 
     public void Create(Distance distance) => _distances.InsertOne(distance);
-
 }

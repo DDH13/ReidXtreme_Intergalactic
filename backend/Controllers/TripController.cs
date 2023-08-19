@@ -136,4 +136,5 @@ public class TripController : ControllerBase
         _tripService.Create(trip);
         return NoContent();
     }
+
 }

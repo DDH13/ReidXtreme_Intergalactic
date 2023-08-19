@@ -36,10 +36,12 @@ public class DestinationController : ControllerBase
         return docks;
     }
 
+
     [HttpPost]
     public ActionResult<Destination> CreateDestination(Destination destination)
     {
         _destinationService.Create(destination);
         return NoContent();
     }
+
 }

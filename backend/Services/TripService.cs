@@ -74,4 +74,5 @@ public class TripService
     }
 
     public void Create(Trip trip) => _trips.InsertOne(trip);
+
 }
