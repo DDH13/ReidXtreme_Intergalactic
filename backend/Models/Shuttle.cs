@@ -12,8 +12,4 @@ public class Shuttle
     [BsonElement("name")] public string Name { get; set; } = string.Empty;
     [BsonElement("type")] public string Type { get; set; } = string.Empty;
     [BsonElement("capacity")] public int Capacity { get; set; } = 0;
-    //speed as a fraction of c (light speed)
-    [BsonElement("speed")] public float Speed { get; set; } = 0;
-    //cost per light minute
-    [BsonElement("cost_per_LM")] public float CostPerLm { get; set; } = 0;
 }
