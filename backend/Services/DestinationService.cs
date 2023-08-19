@@ -21,6 +21,4 @@ public class DestinationService
 
     public List<String> GetDocks(string id) =>
         _destinations.Find(destination => destination.Id == id).FirstOrDefault()?.Docks ?? new List<string>();
-
-
 }

@@ -10,6 +10,7 @@
         <PackageReference Include="BCrypt" Version="1.0.0" />
         <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.10" />
+        <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="8.0.0-preview.7.23375.9" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.5" />
         <PackageReference Include="MongoDB.Bson" Version="2.21.0" />
         <PackageReference Include="MongoDB.Driver" Version="2.21.0" />

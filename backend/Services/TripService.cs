@@ -21,15 +21,15 @@ public class TripService
     public Trip Get(string id) => _trips.Find(trip => trip.Id == id).FirstOrDefault();
 
     //get trips by source
-    public List<Trip> GetBySource(string source) => _trips.Find(trip => trip.Source == new ObjectId(source)).ToList();
+    public List<Trip> GetBySource(string source) => _trips.Find(trip => trip.Source == source).ToList();
 
     //get trips by destination
     public List<Trip> GetByDestination(string destination) =>
-        _trips.Find(trip => trip.Destination == new ObjectId(destination)).ToList();
+        _trips.Find(trip => trip.Destination == destination).ToList();
 
     //get trips by source and destination
     public List<Trip> GetBySourceAndDestination(string source, string destination) => _trips
-        .Find(trip => trip.Source == new ObjectId(source) && trip.Destination == new ObjectId(destination)).ToList();
+        .Find(trip => trip.Source == source && trip.Destination == destination).ToList();
 
     //get trip based on departure date range
     public List<Trip> GetByDepartureDate(DateTime departure1, DateTime departure2)

@@ -17,12 +17,9 @@ public class DistanceService
     //get distance between two planets
     public Distance GetDistanceBetween(string source, string destination)
     {
-        var distance = _distances.Find(distance => distance.Source == new ObjectId(source) && distance.Destination == new ObjectId(destination)).FirstOrDefault() ??
-                       _distances.Find(distance => distance.Source == new ObjectId(destination) && distance.Destination == new ObjectId(source)).FirstOrDefault();
-        if (distance == null)
-        {
-            throw new Exception("Distance not found.");
-        }
+        var distance = _distances.Find(distance => distance.Source == source && distance.Destination == destination).FirstOrDefault() ??
+                       _distances.Find(distance => distance.Source == destination && distance.Destination == source).FirstOrDefault();
+
         return distance;
     }
 
