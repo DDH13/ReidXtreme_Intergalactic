@@ -92,21 +92,18 @@ class MyApp extends StatelessWidget {
           ),
         ),
 
-        floatingActionButtonTheme: (
-            FloatingActionButtonThemeData(
-              backgroundColor: Colors.white,
-              foregroundColor: Colors.black,
-              elevation: 0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
+        floatingActionButtonTheme: (FloatingActionButtonThemeData(
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.black,
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30),
             side: const BorderSide(
-            color: Colors.white,
-            width: 0.7,
+              color: Colors.white,
+              width: 0.7,
             ),
-              ),
-            )
-        ),
-
+          ),
+        )),
 
         // cards
         cardTheme: CardTheme(
@@ -116,12 +113,9 @@ class MyApp extends StatelessWidget {
           elevation: 0,
           margin: const EdgeInsets.all(10),
           color: const Color(0xff1F2933).withOpacity(0.6),
-
         ),
 
-
-
-      //   bottom app bar
+        //   bottom app bar
         bottomAppBarTheme: const BottomAppBarTheme(
           color: Colors.transparent,
           elevation: 0,
@@ -159,17 +153,10 @@ class BackgroundImage extends StatelessWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // app bar
       appBar: AppBar(
         title: Text(widget.title),
         //   add notification icon
@@ -182,90 +169,327 @@ class _MyHomePageState extends State<MyHomePage> {
           IconButton(onPressed: () {}, icon: const Icon(Icons.menu))
         ],
       ),
-
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/backgrounds/star.png'),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'You have pushed the button this many times:',
-                style: Theme.of(context).textTheme.bodySmall,
+      body: SingleChildScrollView(
+        child: Column(children: [
+          //   body
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/backgrounds/star.png'),
+                fit: BoxFit.cover,
               ),
-              Text(
-                '$_counter',
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
-
-              //   button
-              ElevatedButton(
-                onPressed: () {},
-                child: const Text('MORE >'),
-              ),
-
-              //   card
-              const Card(
-                child: Column(
-                  children: [
-                    Text('Card Title'),
-                    Text('Card Subtitle'),
-                    //   card inside card
-                    Card(
-                      child: Column(
-                        children: [
-                          Text('Card Title'),
-                          Text('Card Subtitle'),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
-
-      //   add button
-      bottomNavigationBar: BottomAppBar(
-          // background colour transparent
-          color: Colors.transparent,
-          //   frosted glass background
-          child: ClipRect(
-              child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-                child: Container(
-                  height: 60,
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.1),
+            ),
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'You have pushed the button this many times:',
+                    style: Theme.of(context).textTheme.bodySmall,
                   ),
-                  child: const Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  Text(
+                    'Hi',
+                    style: Theme.of(context).textTheme.headlineMedium,
+                  ),
+
+                  //   button
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: const Text('MORE >'),
+                  ),
+
+                  //   card
+                  const Card(
+                    child: Column(
                       children: [
-                        Text(
-                          'VIEW PACKAGES'
-                        ),
-                        Text(
-                            'BOOK A TRIP'
+                        Text('Card Title'),
+                        Text('Card Subtitle'),
+                        //   card inside card
+                        Card(
+                          child: Column(
+                            children: [
+                              Text('Card Title'),
+                              Text('Card Subtitle'),
+                            ],
+                          ),
                         ),
                       ],
                     ),
                   ),
+
+                  // horizontal scroll with cards
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        Card(
+                          clipBehavior: Clip.antiAlias,
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(16),
+                            ),
+                          ),
+                          // width
+                          child: SizedBox(
+                            width: 250,
+                            child: Column(
+                              children: [
+                                const Image(
+                                  image: AssetImage(
+                                      'assets/images/travels/mars-olympus.jpg'),
+                                ),
+                                Padding(
+                                    padding: EdgeInsets.only(top:16, left:20, bottom:0, right:0),
+                                    child: Align(
+                                      alignment: Alignment.bottomLeft,
+                                      child: Text(
+                                          'Card Title',
+                                          style: Theme.of(context).textTheme.bodyLarge,
+                                      ),
+                                    )
+                                ),
+                                Padding(
+                                    padding: EdgeInsets.only(top:0, left:20, bottom:0, right:0),
+                                    child: Align(
+                                      alignment: Alignment.bottomLeft,
+                                      child: Text(
+                                        'Subtitle',
+                                        style: Theme.of(context).textTheme.bodySmall,
+                                      ),
+                                    )
+                                ),
+                                Padding(
+                                    padding: EdgeInsets.only(right: 10, bottom: 10, top:0),
+                                  child: Align(
+                                    alignment: Alignment.bottomRight,
+                                    child: ElevatedButton(
+                                      onPressed: () {},
+                                      child: const Text('BOOK >'),
+                                    ),
+                                  ),
+                                )
+
+                              ],
+                            ),
+                          ),
+                        ),
+                        Card(
+                          clipBehavior: Clip.antiAlias,
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(16),
+                            ),
+                          ),
+                          // width
+                          child: SizedBox(
+                            width: 250,
+                            child: Column(
+                              children: [
+                                const Image(
+                                  image: AssetImage(
+                                      'assets/images/travels/mercury-north.jpg'),
+                                ),
+                                Padding(
+                                    padding: EdgeInsets.only(top:16, left:20, bottom:0, right:0),
+                                    child: Align(
+                                      alignment: Alignment.bottomLeft,
+                                      child: Text(
+                                        'Card Title',
+                                        style: Theme.of(context).textTheme.bodyLarge,
+                                      ),
+                                    )
+                                ),
+                                Padding(
+                                    padding: EdgeInsets.only(top:0, left:20, bottom:0, right:0),
+                                    child: Align(
+                                      alignment: Alignment.bottomLeft,
+                                      child: Text(
+                                        'Subtitle',
+                                        style: Theme.of(context).textTheme.bodySmall,
+                                      ),
+                                    )
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(right: 10, bottom: 10, top:0),
+                                  child: Align(
+                                    alignment: Alignment.bottomRight,
+                                    child: ElevatedButton(
+                                      onPressed: () {},
+                                      child: const Text('BOOK >'),
+                                    ),
+                                  ),
+                                )
+
+                              ],
+                            ),
+                          ),
+                        ),
+                        Card(
+                          clipBehavior: Clip.antiAlias,
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(16),
+                            ),
+                          ),
+                          // width
+                          child: SizedBox(
+                            width: 250,
+                            child: Column(
+                              children: [
+                                const Image(
+                                  image: AssetImage(
+                                      'assets/images/travels/pluto-blue-glacier.jpg'),
+                                ),
+                                Padding(
+                                    padding: EdgeInsets.only(top:16, left:20, bottom:0, right:0),
+                                    child: Align(
+                                      alignment: Alignment.bottomLeft,
+                                      child: Text(
+                                        'Card Title',
+                                        style: Theme.of(context).textTheme.bodyLarge,
+                                      ),
+                                    )
+                                ),
+                                Padding(
+                                    padding: EdgeInsets.only(top:0, left:20, bottom:0, right:0),
+                                    child: Align(
+                                      alignment: Alignment.bottomLeft,
+                                      child: Text(
+                                        'Subtitle',
+                                        style: Theme.of(context).textTheme.bodySmall,
+                                      ),
+                                    )
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(right: 10, bottom: 10, top:0),
+                                  child: Align(
+                                    alignment: Alignment.bottomRight,
+                                    child: ElevatedButton(
+                                      onPressed: () {},
+                                      child: const Text('BOOK >'),
+                                    ),
+                                  ),
+                                )
+
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  // horizontal scroll with cards
+                  const SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        Card(
+                          clipBehavior: Clip.antiAlias,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(16),
+                            ),
+                          ),
+                          // width
+                          child: SizedBox(
+                            width: 250,
+                            child: Column(
+                              children: [
+                                Image(
+                                  image: AssetImage(
+                                      'assets/images/travels/mars-olympus.jpg'),
+                                ),
+                                Padding(
+                                    padding: EdgeInsets.all(16),
+                                    child: Text('Card Title'))
+                              ],
+                            ),
+                          ),
+                        ),
+                        Card(
+                          clipBehavior: Clip.antiAlias,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(16),
+                            ),
+                          ),
+                          // width
+                          child: SizedBox(
+                            width: 250,
+                            child: Column(
+                              children: [
+                                Image(
+                                  image: AssetImage(
+                                      'assets/images/travels/mercury-north.jpg'),
+                                ),
+                                Padding(
+                                    padding: EdgeInsets.all(16),
+                                    child: Text('Card Title'))
+                              ],
+                            ),
+                          ),
+                        ),
+                        Card(
+                          clipBehavior: Clip.antiAlias,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(16),
+                            ),
+                          ),
+                          // width
+                          child: SizedBox(
+                            width: 250,
+                            child: Column(
+                              children: [
+                                Image(
+                                  image: AssetImage(
+                                      'assets/images/travels/pluto-blue-glacier.jpg'),
+                                ),
+                                Padding(
+                                    padding: EdgeInsets.all(16),
+                                    child: Text('Card Title'))
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-      ))),
+            ),
+          ),
+        ]),
+      ),
+      //   bottom navigation bar
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.home),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.search),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.add),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.notifications),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.person),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
