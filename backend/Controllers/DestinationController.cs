@@ -35,4 +35,13 @@ public class DestinationController : ControllerBase
         var docks = _destinationService.GetDocks(id);
         return docks;
     }
+
+
+    [HttpPost]
+    public ActionResult<Destination> CreateDestination(Destination destination)
+    {
+        _destinationService.Create(destination);
+        return NoContent();
+    }
+
 }

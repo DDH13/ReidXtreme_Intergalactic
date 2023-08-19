@@ -25,4 +25,7 @@ public class ShuttleService
         }
         return shuttle;
     }
+
+    public void Create(Shuttle shuttle) => _shuttles.InsertOne(shuttle);
+
 }

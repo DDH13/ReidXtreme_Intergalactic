@@ -23,4 +23,5 @@ public class DistanceService
         return distance;
     }
 
+    public void Create(Distance distance) => _distances.InsertOne(distance);
 }

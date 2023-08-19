@@ -30,7 +30,14 @@ public class ShuttleController : ControllerBase
         {
             return NotFound();
         }
-
         return shuttle;
     }
+
+    [HttpPost]
+    public ActionResult<Shuttle> Create(Shuttle shuttle)
+    {
+        _shuttleService.Create(shuttle);
+        return NoContent();
+    }
+
 }

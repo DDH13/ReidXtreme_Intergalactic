@@ -71,7 +71,8 @@ public class TripService
             trip.Departure.Month == departure.Month && trip.Departure.Day == departure.Day &&
             trip.Source == source && trip.Destination == destination);
         return _trips.Find(filter).ToList();
-
     }
+
+    public void Create(Trip trip) => _trips.InsertOne(trip);
 
 }
