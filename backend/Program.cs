@@ -12,6 +12,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddSingleton<UserService>();
+builder.Services.AddSingleton<TripService>();
+builder.Services.AddSingleton<ShuttleService>();
+builder.Services.AddSingleton<DestinationService>();
+builder.Services.AddSingleton<BookingService>();
+builder.Services.AddSingleton<DistanceService>();
+
 
 builder.Services.AddSwaggerGen(options =>
 {

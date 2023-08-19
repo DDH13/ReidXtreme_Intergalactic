@@ -19,6 +19,8 @@ public class Trip
     public String DestinationDock { get; set; } = string.Empty;
     [BsonElement("shuttle")]
     public ObjectId Shuttle { get; set; } = new ObjectId(string.Empty);
+    [BsonElement("ticket_price")]
+    public float TicketPrice { get; set; } = 0;
 
     //year is irrelevant, storing as a DateTime for ease of use
     //recurring trips will have the same date and time every year
