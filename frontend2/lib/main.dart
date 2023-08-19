@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:frontend2/views/booking_view/find_shuttle_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -194,7 +195,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
                   //   button
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => FindShuttleView()));
+                    },
                     child: const Text('MORE >'),
                   ),
 
@@ -239,27 +245,32 @@ class _MyHomePageState extends State<MyHomePage> {
                                       'assets/images/travels/mars-olympus.jpg'),
                                 ),
                                 Padding(
-                                    padding: EdgeInsets.only(top:16, left:20, bottom:0, right:0),
+                                    padding: EdgeInsets.only(
+                                        top: 16, left: 20, bottom: 0, right: 0),
                                     child: Align(
                                       alignment: Alignment.bottomLeft,
                                       child: Text(
-                                          'Card Title',
-                                          style: Theme.of(context).textTheme.bodyLarge,
+                                        'Card Title',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyLarge,
                                       ),
-                                    )
-                                ),
+                                    )),
                                 Padding(
-                                    padding: EdgeInsets.only(top:0, left:20, bottom:0, right:0),
+                                    padding: EdgeInsets.only(
+                                        top: 0, left: 20, bottom: 0, right: 0),
                                     child: Align(
                                       alignment: Alignment.bottomLeft,
                                       child: Text(
                                         'Subtitle',
-                                        style: Theme.of(context).textTheme.bodySmall,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodySmall,
                                       ),
-                                    )
-                                ),
+                                    )),
                                 Padding(
-                                    padding: EdgeInsets.only(right: 10, bottom: 10, top:0),
+                                  padding: EdgeInsets.only(
+                                      right: 10, bottom: 10, top: 0),
                                   child: Align(
                                     alignment: Alignment.bottomRight,
                                     child: ElevatedButton(
@@ -268,7 +279,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ),
                                   ),
                                 )
-
                               ],
                             ),
                           ),
@@ -290,27 +300,32 @@ class _MyHomePageState extends State<MyHomePage> {
                                       'assets/images/travels/mercury-north.jpg'),
                                 ),
                                 Padding(
-                                    padding: EdgeInsets.only(top:16, left:20, bottom:0, right:0),
+                                    padding: EdgeInsets.only(
+                                        top: 16, left: 20, bottom: 0, right: 0),
                                     child: Align(
                                       alignment: Alignment.bottomLeft,
                                       child: Text(
                                         'Card Title',
-                                        style: Theme.of(context).textTheme.bodyLarge,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyLarge,
                                       ),
-                                    )
-                                ),
+                                    )),
                                 Padding(
-                                    padding: EdgeInsets.only(top:0, left:20, bottom:0, right:0),
+                                    padding: EdgeInsets.only(
+                                        top: 0, left: 20, bottom: 0, right: 0),
                                     child: Align(
                                       alignment: Alignment.bottomLeft,
                                       child: Text(
                                         'Subtitle',
-                                        style: Theme.of(context).textTheme.bodySmall,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodySmall,
                                       ),
-                                    )
-                                ),
+                                    )),
                                 Padding(
-                                  padding: EdgeInsets.only(right: 10, bottom: 10, top:0),
+                                  padding: EdgeInsets.only(
+                                      right: 10, bottom: 10, top: 0),
                                   child: Align(
                                     alignment: Alignment.bottomRight,
                                     child: ElevatedButton(
@@ -319,7 +334,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ),
                                   ),
                                 )
-
                               ],
                             ),
                           ),
@@ -341,27 +355,32 @@ class _MyHomePageState extends State<MyHomePage> {
                                       'assets/images/travels/pluto-blue-glacier.jpg'),
                                 ),
                                 Padding(
-                                    padding: const EdgeInsets.only(top:16, left:20, bottom:0, right:0),
+                                    padding: const EdgeInsets.only(
+                                        top: 16, left: 20, bottom: 0, right: 0),
                                     child: Align(
                                       alignment: Alignment.bottomLeft,
                                       child: Text(
                                         'Card Title',
-                                        style: Theme.of(context).textTheme.bodyLarge,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyLarge,
                                       ),
-                                    )
-                                ),
+                                    )),
                                 Padding(
-                                    padding: const EdgeInsets.only(top:0, left:20, bottom:0, right:0),
+                                    padding: const EdgeInsets.only(
+                                        top: 0, left: 20, bottom: 0, right: 0),
                                     child: Align(
                                       alignment: Alignment.bottomLeft,
                                       child: Text(
                                         'Subtitle',
-                                        style: Theme.of(context).textTheme.bodySmall,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodySmall,
                                       ),
-                                    )
-                                ),
+                                    )),
                                 Padding(
-                                  padding: const EdgeInsets.only(right: 10, bottom: 10, top:0),
+                                  padding: const EdgeInsets.only(
+                                      right: 10, bottom: 10, top: 0),
                                   child: Align(
                                     alignment: Alignment.bottomRight,
                                     child: ElevatedButton(
@@ -370,7 +389,6 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ),
                                   ),
                                 )
-
                               ],
                             ),
                           ),
@@ -394,7 +412,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           // width
                           child: SizedBox(
                             width: 200,
-                            child: Stack (
+                            child: Stack(
                               children: [
                                 Image(
                                   image: AssetImage(
