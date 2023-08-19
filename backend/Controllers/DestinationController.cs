@@ -25,15 +25,27 @@ public class DestinationController : ControllerBase
     [HttpGet("{id}")]
     public ActionResult<Destination> GetDestination(string id)
     {
-        var destination = _destinationService.Get(id);
-        return destination;
+        try
+        {
+            var destination = _destinationService.Get(id);
+            return destination;
+        } catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
     }
 
     [HttpGet("docks/{id}")]
     public ActionResult<List<string>> GetDestinationDocks(string id)
     {
-        var docks = _destinationService.GetDocks(id);
-        return docks;
+        try
+        {
+            var docks = _destinationService.GetDocks(id);
+            return docks;
+        } catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
     }
 
     [HttpPost]

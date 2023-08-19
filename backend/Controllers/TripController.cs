@@ -101,6 +101,11 @@ public class TripController : ControllerBase
     [HttpGet("departure")]
     public ActionResult<List<Trip>> GetByDepartureDate(DateTime departure1, DateTime departure2)
     {
+        if (departure1 > departure2)
+        {
+            return BadRequest("Departure 1 must be before departure 2");
+        }
+
         var trips = _tripService.GetByDepartureDate(departure1, departure2);
 
         if (trips == null)
@@ -114,20 +119,27 @@ public class TripController : ControllerBase
     [HttpGet("cost/{id}")]
     public ActionResult<float> GetCost(string id, int adults, int children)
     {
-        var cost = _tripService.GetCost(id, adults, children);
-        if (cost == 0)
+        try
         {
-            return NotFound();
+            var cost = _tripService.GetCost(id, adults, children);
+            return cost;
+        } catch (Exception e)
+        {
+            return NotFound(e.Message);
         }
-
-        return cost;
     }
 
     [HttpGet("distance/{source}/{destination}")]
     public ActionResult<float> GetDistance(string source, string destination)
     {
-        var distance = _distanceService.GetDistanceBetween(source, destination);
-        return distance.DistanceLm;
+        try
+        {
+            var distance = _distanceService.GetDistanceBetween(source, destination);
+            return distance.DistanceLm;
+        } catch (Exception e)
+        {
+            return NotFound(e.Message);
+        }
     }
 
     [HttpPost]

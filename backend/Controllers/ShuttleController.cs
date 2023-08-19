@@ -24,13 +24,14 @@ public class ShuttleController : ControllerBase
     [HttpGet("{id}")]
     public ActionResult<Shuttle> Get(string id)
     {
-        var shuttle = _shuttleService.Get(id);
-
-        if (shuttle == null)
+        try
         {
-            return NotFound();
+            var shuttle = _shuttleService.Get(id);
+            return shuttle;
+        } catch (Exception e)
+        {
+            return BadRequest(e.Message);
         }
-        return shuttle;
     }
 
     [HttpPost]

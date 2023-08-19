@@ -19,13 +19,26 @@ public class BookingController : ControllerBase
     [HttpGet("{id}", Name = "GetBooking")]
     public ActionResult<IEnumerable<Booking>> Get()
     {
-        return Ok(_bookingService.Get());
+        try
+        {
+            return Ok(_bookingService.Get());
+        } catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
     }
 
     [HttpGet("user/{userId}")]
     public ActionResult<IEnumerable<Booking>> GetUserBookings(string userId)
     {
-        return Ok(_bookingService.GetByUser(userId));
+        try
+        {
+            return Ok(_bookingService.GetByUser(userId));
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
     }
 
     [HttpPost("add")]
@@ -63,7 +76,7 @@ public class BookingController : ControllerBase
         {
             return BadRequest(ModelState);
         }
+
         return Ok();
     }
-
 }
