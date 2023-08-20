@@ -65,6 +65,12 @@ flutter:
     - assets/images/payment/
     - assets/images/planets/
 
+  fonts:
+    - family: Saira
+      fonts:
+        - asset: assets/fonts/Saira-Regular.ttf
+
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

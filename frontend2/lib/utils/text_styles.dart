@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 
 abstract class ThemeText {
+
+  static const TextStyle bodyLarge = TextStyle(
+    fontFamily: 'Saira',
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+  );
+
   static const TextStyle headlineLarge = TextStyle(
     fontFamily: 'Space Grotesk',
     fontSize: 32,
@@ -13,9 +20,5 @@ abstract class ThemeText {
     fontWeight: FontWeight.bold,
   );
 
-  static const TextStyle bodyLarge = TextStyle(
-    fontFamily: 'Saira',
-    fontSize: 18,
-    fontWeight: FontWeight.bold,
-  );
+
 }

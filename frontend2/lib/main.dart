@@ -1,8 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:frontend2/views/booking_view/find_shuttle_view.dart';
-import 'package:frontend2/views/booking_view/payment_confirmation.dart';
-import 'package:frontend2/views/booking_view/payment.dart';
+
+import 'package:frontend2/views/booking_view/avaiable_shuttles.dart';
 import '../../utils/appbar_styles.dart';
 
 void main() {
@@ -189,12 +189,12 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-<<<<<<< Updated upstream
-                            builder: (context) => PaymentConfirmation()),
-=======
+
+
+
                             builder: (context) =>
-                                Payment()),
->>>>>>> Stashed changes
+                                AvailableShuttles()),
+
                       );
                     },
                     child: const Text('PAY >'),
