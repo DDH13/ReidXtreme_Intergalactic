@@ -1,5 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
+import 'package:frontend2/views/booking_view/available_shuttles.dart';
 import 'package:flutter/material.dart';
 import '../../models/destination.dart';
 import '../../services/destination_service.dart';
@@ -7,9 +6,10 @@ import '../../utils/appbar_styles.dart';
 import '../../utils/datepicker_styles.dart';
 import '../../utils/dropdown_button_styles.dart';
 import '../../utils/textbox_increment_styles.dart';
+import '../../utils/elevated_button_styles.dart';
 
 class FindShuttleView extends StatefulWidget {
-  FindShuttleView({Key? key}) : super(key: key);
+  const FindShuttleView({Key? key}) : super(key: key);
 
   @override
   _FindShuttleViewState createState() => _FindShuttleViewState();
@@ -29,6 +29,7 @@ class _FindShuttleViewState extends State<FindShuttleView>
 
   @override
   Widget build(BuildContext context) {
+    
     return FutureBuilder<List<Destination>>(
         future: _destinations,
         builder: (context, snapshot) {
@@ -177,7 +178,6 @@ class _FindShuttleViewState extends State<FindShuttleView>
         });
   }
 }
-
 
 // class Month1 extends StatelessWidget {
 //   Month1({Key? key}) : super(key: key);

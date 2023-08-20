@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../utils/card_styles.dart';
 import '../../utils/text_styles.dart';
+import '../../utils/elevated_button_styles.dart';
 
 class DetailedCardTheme extends CustomCardTheme {
   static CardTheme get detailedCardTheme {
@@ -15,7 +16,8 @@ class DetailedCardTheme extends CustomCardTheme {
   }
 
 // method to create trip details card for billing
-  static Card createTripDetailsCard(String outboundDepartureTime,
+  static Card createTripDetailsCard(
+      String outboundDepartureTime,
       String outboundDepartureDate,
       String outboundArrivalTime,
       String outboundArrivalDate,
@@ -24,14 +26,20 @@ class DetailedCardTheme extends CustomCardTheme {
       String inboundArrivalTime,
       String inboundArrivalDate,
       String departure,
-      String arrival) {
+      String arrival,
+
+      double imageWidth,
+      double imageHeight,
+      double spaceWidth,
+      double buttonSize
+      ) {
     return Card(
       shape: RoundedRectangleBorder(
         side: const BorderSide(color: Colors.white, width: 0.7),
         borderRadius: BorderRadius.circular(16),
       ),
       child: Padding(
-        padding: const EdgeInsets.only(top: 16.0, bottom: 16.0),
+        padding: const EdgeInsets.only(top: 16.0, bottom: 16.0, left: 10, right: 10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -44,8 +52,9 @@ class DetailedCardTheme extends CustomCardTheme {
                   style: ThemeText.bodySmall,
                   textAlign: TextAlign.center,
                 ),
+                // border radius
                 SizedBox.fromSize(
-                  size: const Size(200, 50),
+                  size: Size(imageWidth, imageHeight),
                   child: Image.asset(
                     'assets/images/depart.png',
                     fit: BoxFit.fitWidth,
@@ -62,13 +71,13 @@ class DetailedCardTheme extends CustomCardTheme {
             // arrival and departure stations
             Row(
               children: [
-                const SizedBox(width: 86),
+                SizedBox(width: spaceWidth),
                 SizedBox.fromSize(
-                  size: const Size(200, 32),
+                  size: Size(buttonSize, 32),
                   child: ElevatedButton(
                     onPressed: null,
                     child: Text(
-                      '$departure                -                $arrival',
+                      '$departure         -         $arrival',
                       style: ThemeText.bodySmall,
                     ),
                   ),
@@ -86,7 +95,7 @@ class DetailedCardTheme extends CustomCardTheme {
                   textAlign: TextAlign.center,
                 ),
                 SizedBox.fromSize(
-                  size: const Size(200, 50),
+                  size: Size(imageWidth, imageHeight),
                   // rotate image
                   child: Transform.rotate(
                     angle: 3.14,
@@ -179,6 +188,7 @@ class DetailedCardTheme extends CustomCardTheme {
                         ),
                       ],
                     ),
+
                     // tourer offer
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -291,5 +301,226 @@ class DetailedCardTheme extends CustomCardTheme {
         )
       )
     );
+  }
+
+//   method to create available shuttle card
+  static Card createAvailableShuttleCard(
+      String shuttleName,
+      String shuttleClass,
+      String outboundDepartureTime,
+      String outboundDepartureDate,
+      String outboundArrivalTime,
+      String outboundArrivalDate,
+      String inboundDepartureTime,
+      String inboundDepartureDate,
+      String inboundArrivalTime,
+      String inboundArrivalDate,
+      String duration,
+      String departure,
+      String arrival,
+      String transitCount,
+      String adultPassengerCount,
+      String fare,
+      ) {
+    return Card(
+      color: const Color(0xff2A1F33).withOpacity(0.6),
+      shape: RoundedRectangleBorder(
+        side: const BorderSide(color: Colors.white, width: 0.7),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.only(top: 16.0, bottom: 16.0),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text(
+                  shuttleName,
+                  style: ThemeText.bodyLarge,
+                ),
+                Text(
+                  duration,
+                  style: ThemeText.bodySmall,
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text(
+                  shuttleClass,
+                  style: ThemeText.bodySmall,
+                ),
+                Text(
+                  '$transitCount TRANSIT(S)',
+                  style: ThemeText.bodySmall,
+                ),
+              ],
+            ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  createTripDetailsCard(
+                    outboundDepartureTime,
+                    outboundDepartureDate,
+                    outboundArrivalTime,
+                    outboundArrivalDate,
+                    inboundDepartureTime,
+                    inboundDepartureDate,
+                    inboundArrivalTime,
+                    inboundArrivalDate,
+                    departure,
+                    arrival,
+                    100,
+                    50,
+                    5,
+                    150
+                  ),
+                Column(
+                  children: [
+                    const Text('\n\n\n'),
+                    Text(
+                      '\$ $fare',
+                      style: ThemeText.bodyLarge,
+                      textAlign: TextAlign.right,
+                    ),
+                    Text(
+                      '$adultPassengerCount ADULTS',
+                      style: ThemeText.bodySmall,
+                      textAlign: TextAlign.right,
+                    )
+                  ],
+                ),
+              ],
+            ),
+
+          ],
+        )
+      ),
+    );
+  }
+
+//   method to create trending activity card
+  static Card createTrendingActivityCard(
+      String activityName,
+      String activityLocation,
+      String buttonText,
+      String imageName,
+      ){
+    return Card(
+      clipBehavior: Clip.antiAlias,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(16),
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.only(top: 16.0, bottom: 16.0, left: 10, right: 10),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // outbound trip
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SizedBox.fromSize(
+                  size: const Size(110, 110),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16),
+                    child: Image.asset(
+                      imageName,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Column(
+                  children: [
+                    Text(
+                      activityName,
+                      style: ThemeText.bodyLarge,
+                    ),
+                    Text(
+                      activityLocation,
+                      style: ThemeText.bodySmall,
+                    ),
+                    SizedBox(height: 5,),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: CustomElevatedButtonTheme.customButtonTheme.style,
+                      child: Text(buttonText),
+                    ),
+                  ]
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+      )
+    ;
+
+
+
+  }
+
+  static Card createFrequentActivityCard(
+      String travelTitle,
+      String travelSubtitle,
+      String imageName,
+      ){
+    return Card(
+      clipBehavior: Clip.antiAlias,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(16),
+        ),
+      ),
+      // width
+      child: SizedBox(
+        width: 200,
+        child: Column(
+          children: [
+            Image(
+              image: AssetImage(
+                  imageName),
+            ),
+            Padding(
+                padding: EdgeInsets.only(
+                    top: 16, left: 20, bottom: 0, right: 0),
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Text(
+                    travelTitle,
+                    style: ThemeText.bodyLarge,
+                  ),
+                )),
+            Padding(
+                padding: EdgeInsets.only(
+                    top: 0, left: 20, bottom: 0, right: 0),
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Text(
+                    travelSubtitle,
+                    style: ThemeText.bodySmall,
+                  ),
+                )),
+            Padding(
+              padding: const EdgeInsets.only(
+                  right: 10, bottom: 10, top: 0),
+              child: Align(
+                alignment: Alignment.bottomRight,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: CustomElevatedButtonTheme.customButtonTheme.style,
+                  child: const Text('BOOK >'),
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+
   }
 }
