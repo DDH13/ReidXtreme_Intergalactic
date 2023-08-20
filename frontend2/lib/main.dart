@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:frontend2/views/booking_view/billing.dart';
 import 'package:frontend2/views/booking_view/find_shuttle_view.dart';
 import '../../utils/appbar_styles.dart';
 import '../../utils/card_styles.dart';
 import '../../utils/detailed_card_styles.dart';
+import '../../utils/elevated_button_styles.dart';
+import '../../utils/text_styles.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,82 +32,29 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.dark,
         ),
 
-        // typography
+        // text theme
         textTheme: const TextTheme(
-          headlineLarge: TextStyle(
-            fontFamily: 'Space Grotesk',
-            fontSize: 32,
-            fontWeight: FontWeight.bold,
-          ),
-          headlineMedium: TextStyle(
-            fontFamily: 'Space Grotesk',
-            fontSize: 26,
-            fontWeight: FontWeight.bold,
-          ),
-          bodyLarge: TextStyle(
-            fontFamily: 'Saira',
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
-          bodyMedium: TextStyle(fontFamily: 'Saira', fontSize: 16),
-          bodySmall: TextStyle(
-              fontFamily: 'Saira', fontSize: 14, color: Color(0xffCBCBCB)),
+          headlineLarge: ThemeText.headlineLarge,
+          headlineMedium: ThemeText.headlineMedium,
+          bodyLarge: ThemeText.bodyLarge,
+          bodyMedium: ThemeText.bodyMedium,
+          bodySmall: ThemeText.bodySmall,
         ),
 
-        // elevated button styling
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ButtonStyle(
-            // transparent background color
-            backgroundColor: MaterialStateProperty.all<Color>(
-              Theme.of(context).colorScheme.primary.withOpacity(0),
-            ),
-            // border colour white, stroke width 0.5
-            side: MaterialStateProperty.all<BorderSide>(
-              const BorderSide(
-                color: Colors.white,
-                width: 0.7,
-              ),
-            ),
-            foregroundColor: MaterialStateProperty.all<Color>(
-              Theme.of(context).colorScheme.onPrimary,
-            ),
-            padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-              const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 8,
-              ),
-            ),
-            shape: MaterialStateProperty.all<OutlinedBorder>(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
-              ),
-            ),
-          ),
-        ),
+        // elevated button theme
+        elevatedButtonTheme: CustomElevatedButtonTheme.customButtonTheme,
 
-        floatingActionButtonTheme: (FloatingActionButtonThemeData(
-          backgroundColor: Colors.white,
-          foregroundColor: Colors.black,
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30),
-            side: const BorderSide(
-              color: Colors.white,
-              width: 0.7,
-            ),
-          ),
-        )),
+        // floating action button theme
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          foregroundColor: Theme.of(context).colorScheme.onPrimary,
+        ),
 
         // card theme
         cardTheme: CustomCardTheme.customCardTheme,
 
-        //   bottom app bar
-        bottomAppBarTheme: const BottomAppBarTheme(
-          color: Colors.transparent,
-          elevation: 0,
-        ),
       ),
-      home: const MyHomePage(title: 'Available Shuttles'),
+      home: const MyHomePage(title: 'Intergalactic'),
     );
   }
 }
@@ -139,27 +87,11 @@ class BackgroundImage extends StatelessWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String dropdownValue = 'Dog';
-  DateTime? _selectedDate;
-
-  void _showDatePicker() async {
-    final pickedDate = await showDatePicker(
-      context: context,
-      initialDate: _selectedDate ?? DateTime.now(),
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2101),
-    );
-
-    if (pickedDate != null && pickedDate != _selectedDate) {
-      setState(() {
-        _selectedDate = pickedDate;
-      });
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: 'Home'),
+      appBar: const CustomAppBar(title: 'For You'),
       body: SingleChildScrollView(
         child: Column(children: [
           //   body
@@ -174,28 +106,27 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
+                  // const SizedBox(
+                  //   height: 10,
+                  // ),
                   Text(
-                    'You have pushed the button this many times:',
+                    'Current Location: EARTH',
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
-                  Text(
-                    'Hi',
-                    style: Theme.of(context).textTheme.headlineMedium,
-                  ),
 
-                  //   button
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => Billing()),
-                      );
-                    },
-                    child: const Text('BILLING >'),
+                  // left aligned heading
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        top: 20, left: 20, bottom: 0, right: 0),
+                    child: Align(
+                      alignment: Alignment.bottomLeft,
+                      child: Text(
+                        'Trending Activities',
+                        style: Theme.of(context).textTheme.bodyLarge,
+                      ),
+                    ),
                   ),
-
-                  DetailedCardTheme.createTripDetailsCard('12:30', '10/12', '00:30', '12/12', '12:30', '21/12', '00:30', '19/12', 'ISI', 'MD1'),
+                  DetailedCardTheme.createTripDetailsCard('12:30', '10/12', '00:30', '12/12', '12:30', '21/12', '00:30', '19/12', 'ISI', 'MD1', 200, 50, 86, 200),
 
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
@@ -441,62 +372,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       ],
                     ),
                   ),
-
-                  Container(
-                    height: 40,
-                    width: 132,
-                    // style: TextStyle(),
-                    child: DropdownButtonFormField<String>(
-                      // Step 3.
-                      value: dropdownValue,
-                      decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          contentPadding: EdgeInsets.fromLTRB(10, 0, 0, 0)),
-                      itemHeight: 50,
-                      // width: 200,
-                      // Step 4.
-                      items: <String>['Dog', 'Cat', 'Tiger', 'ISS-2']
-                          .map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(
-                            value,
-                            style: const TextStyle(
-                                fontSize: 15, fontFamily: 'Space Grotesk'),
-                          ),
-                        );
-                      }).toList(),
-                      // Step 5.
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          dropdownValue = newValue!;
-                        });
-                      },
-                    ),
-                  ),
-
-                  Container(
-                    height: 40,
-                    width: 160,
-                    child: TextFormField(
-                      readOnly: true,
-                      onTap: _showDatePicker,
-                      decoration: const InputDecoration(
-                        contentPadding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                        border: OutlineInputBorder(),
-                        labelText: 'Date',
-                        labelStyle:
-                            TextStyle(color: Colors.white, fontSize: 15),
-                        suffixIcon:
-                            Icon(Icons.calendar_today, color: Colors.white),
-                      ),
-                      controller: TextEditingController(
-                        text: _selectedDate != null
-                            ? "${_selectedDate!.day}/${_selectedDate!.month}/${_selectedDate!.year}"
-                            : "",
-                      ),
-                    ),
-                  )
                 ],
               ),
             ),
