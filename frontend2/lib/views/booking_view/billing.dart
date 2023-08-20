@@ -52,8 +52,9 @@ class _BillingState extends State<Billing> with SingleTickerProviderStateMixin {
               ),
               const SizedBox(height: 20),
               // add trip details here
-              DetailedCardTheme.createDetailedCard('12:30', '10/12', '00:30',
+              DetailedCardTheme.createTripDetailsCard('12:30', '10/12', '00:30',
                   '12/12', '12:30', '21/12', '00:30', '19/12', 'ISI', 'MD1'),
+              DetailedCardTheme.createBillingDetailsCard('IS1', 'MD1', '25,000', '3', '8,500', '-500', '50,000')
             ],
           ),
 

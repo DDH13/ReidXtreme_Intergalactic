@@ -15,8 +15,7 @@ class DetailedCardTheme extends CustomCardTheme {
   }
 
 // method to create trip details card for billing
-  static Card createDetailedCard(
-      String outboundDepartureTime,
+  static Card createTripDetailsCard(String outboundDepartureTime,
       String outboundDepartureDate,
       String outboundArrivalTime,
       String outboundArrivalDate,
@@ -107,6 +106,190 @@ class DetailedCardTheme extends CustomCardTheme {
           ],
         ),
       ),
+    );
+  }
+
+//   method to create billing details card for billing
+  static Card createBillingDetailsCard(
+      String departure,
+      String arrival,
+      String totalFare,
+      String adultPassengerCount,
+      String adultPassengerFare,
+      String tourerOffer,
+      String subTotal,
+      ) {
+    return Card(
+      shape: RoundedRectangleBorder(
+        side: const BorderSide(color: Colors.white, width: 0.7),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.only(top: 16.0, bottom: 16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            const Text(
+              'Billing Details',
+              style: ThemeText.bodyMedium,
+              textAlign: TextAlign.left,
+            ),
+
+            // outbound trip
+            Card(
+              color: const Color(0xff323F4B),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 16.0, bottom: 16.0, left: 0, right: 0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          'FLIGHT $departure - $arrival',
+                          style: ThemeText.bodySmall,
+                        ),
+                        const Text(
+                          '',
+                          style: ThemeText.bodySmall,
+                        ),
+                        Text(
+                          '\$$totalFare',
+                          style: ThemeText.bodySmall,
+                        ),
+                      ],
+                    ),
+                    // fare breakdown
+                    // adult
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        const Text(
+                          '',
+                          style: ThemeText.bodySmall,
+                        ),
+                        Text(
+                          'ADULT X $adultPassengerCount',
+                          style: ThemeText.bodySmall,
+                        ),
+                        Text(
+                          '$adultPassengerFare X$adultPassengerCount',
+                          style: ThemeText.bodySmall,
+                        ),
+                      ],
+                    ),
+                    // tourer offer
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        const Text(
+                          '',
+                          style: ThemeText.bodySmall,
+                        ),
+                        const Text(
+                          'TOURER OFFER',
+                          style: ThemeText.bodySmall,
+                        ),
+                        Text(
+                          tourerOffer,
+                          style: ThemeText.bodySmall,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            // inbound trip card
+            Card(
+              color: const Color(0xff323F4B),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 16.0, bottom: 16.0, left: 0, right: 0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          'FLIGHT $arrival - $departure',
+                          style: ThemeText.bodySmall,
+                        ),
+                        const Text(
+                          '',
+                          style: ThemeText.bodySmall,
+                        ),
+                        Text(
+                          '\$$totalFare',
+                          style: ThemeText.bodySmall,
+                        ),
+                      ],
+                    ),
+                    // fare breakdown
+                    // adult
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        const Text(
+                          '',
+                          style: ThemeText.bodySmall,
+                        ),
+                        Text(
+                          'ADULT X $adultPassengerCount',
+                          style: ThemeText.bodySmall,
+                        ),
+                        Text(
+                          '$adultPassengerFare X$adultPassengerCount',
+                          style: ThemeText.bodySmall,
+                        ),
+                      ],
+                    ),
+                    // tourer offer
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        const Text(
+                          '',
+                          style: ThemeText.bodySmall,
+                        ),
+                        const Text(
+                          'TOURER OFFER',
+                          style: ThemeText.bodySmall,
+                        ),
+                        Text(
+                          tourerOffer,
+                          style: ThemeText.bodySmall,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            // sub total
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                const Text(
+                  'TOTAL',
+                  style: ThemeText.bodySmall,
+                ),
+                const Text(
+                  '',
+                  style: ThemeText.bodySmall,
+                ),
+                Text(
+                  '\$$subTotal',
+                  style: ThemeText.bodySmall,
+                ),
+              ],
+            ),
+          ],
+        )
+      )
     );
   }
 }
