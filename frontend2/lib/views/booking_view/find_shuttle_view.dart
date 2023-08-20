@@ -62,7 +62,8 @@ class _FindShuttleViewState extends State<FindShuttleView>
                             const Text('From',
                                 style: TextStyle(fontWeight: FontWeight.bold)),
                             CustomDropdownButtonFormField(dropdownValue: destinations[0].name??"",dropdownItems: destinations.map((destination) => destination.name??"").toList()),
-                            CustomDropdownButtonFormField(dropdownValue: 'Dog',dropdownItems: ['Dog','Cat','Bird']),
+                            CustomDropdownButtonFormField(dropdownValue: destinations[0].docks?[0]??"",dropdownItems: destinations.firstWhere((destination) => destination.name == 'Saturn')
+                                .docks ?? ['']),
                           ],
                         ),
                       ),
@@ -77,7 +78,8 @@ class _FindShuttleViewState extends State<FindShuttleView>
                                   style: TextStyle(fontWeight: FontWeight.bold)),
                             ),
                             CustomDropdownButtonFormField(dropdownValue: destinations[0].name??"",dropdownItems: destinations.map((destination) => destination.name??"").toList()),
-                            CustomDropdownButtonFormField(dropdownValue: 'Earth',dropdownItems: destinations.map((destination) => destination.name??"").toList()),
+                            CustomDropdownButtonFormField(dropdownValue: destinations[0].docks?[0]??"",dropdownItems: destinations.firstWhere((destination) => destination.name == 'Saturn')
+                                .docks ?? ['']),
                           ],
                         ),
                       ),
