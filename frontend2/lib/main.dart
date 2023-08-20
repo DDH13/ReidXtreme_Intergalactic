@@ -4,7 +4,6 @@ import 'package:frontend2/views/booking_view/find_shuttle_view.dart';
 import 'package:frontend2/views/booking_view/payment_confirmation.dart';
 import '../../utils/appbar_styles.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Intergalactic',
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
@@ -159,8 +158,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-          title: 'Home'),
+      appBar: CustomAppBar(title: 'Home'),
       body: SingleChildScrollView(
         child: Column(children: [
           //   body
@@ -190,29 +188,82 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) =>
-                                PaymentConfirmation()),
+                            builder: (context) => PaymentConfirmation()),
                       );
                     },
                     child: const Text('PAY >'),
                   ),
 
-                  //   card
-                  const Card(
-                    child: Column(
-                      children: [
-                        Text('Card Title'),
-                        Text('Card Subtitle'),
-                        //   card inside card
-                        Card(
-                          child: Column(
+                  // card with image
+                  Card(
+                    clipBehavior: Clip.antiAlias,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(16),
+                      ),
+                    ),
+                    // width
+                    child: SizedBox(
+                      // screen width
+                      width: MediaQuery.of(context).size.width,
+                      child: Column(
+                        children: [
+                          Padding(
+                              padding: EdgeInsets.only(
+                                  top: 16, left: 20, bottom: 0, right: 0),
+                              child: Align(
+                                alignment: Alignment.bottomLeft,
+                                child: Text(
+                                  'SpaceX MK1',
+                                  style: Theme.of(context).textTheme.bodyLarge,
+                                ),
+                              )),
+                          Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 0, left: 20, bottom: 0, right: 0),
+                              child: Align(
+                                alignment: Alignment.bottomLeft,
+                                child: Text(
+                                  'FIRST CLASS',
+                                  style: Theme.of(context).textTheme.bodySmall,
+                                ),
+                              )),
+                          // positioned background image
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10, bottom: 0),
+                            child: Align(
+                              alignment: Alignment.bottomRight,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            FindShuttleView()),
+                                  );
+                                },
+                                child: const Text('VIEW >'),
+                              ),
+                            ),
+                          ),
+                          Stack(
                             children: [
-                              Text('Card Title'),
-                              Text('Card Subtitle'),
+                              Container(
+                                height: 150,
+                                decoration: const BoxDecoration(
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                        'assets/images/planets/mars.png'),
+                                    fit: BoxFit.fitWidth,
+                                      alignment: FractionalOffset.topLeft
+                                  ),
+
+                                ),
+                              ),
                             ],
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
 
@@ -467,35 +518,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ]),
       ),
-
-      //   bottom navigation bar
-      // bottomNavigationBar: BottomAppBar(
-      //   child: Row(
-      //     mainAxisAlignment: MainAxisAlignment.spaceAround,
-      //     children: [
-      //       IconButton(
-      //         onPressed: () {},
-      //         icon: const Icon(Icons.home),
-      //       ),
-      //       IconButton(
-      //         onPressed: () {},
-      //         icon: const Icon(Icons.search),
-      //       ),
-      //       IconButton(
-      //         onPressed: () {},
-      //         icon: const Icon(Icons.add),
-      //       ),
-      //       IconButton(
-      //         onPressed: () {},
-      //         icon: const Icon(Icons.notifications),
-      //       ),
-      //       IconButton(
-      //         onPressed: () {},
-      //         icon: const Icon(Icons.person),
-      //       ),
-      //     ],
-      //   ),
-      // ),
     );
   }
 }

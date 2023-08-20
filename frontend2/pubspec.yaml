@@ -63,6 +63,7 @@ flutter:
     - assets/images/travels/
     - assets/images/events/
     - assets/images/payment/
+    - assets/images/planets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
