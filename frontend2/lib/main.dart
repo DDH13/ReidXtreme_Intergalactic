@@ -1,9 +1,9 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:frontend2/views/booking_view/billing.dart';
 import 'package:frontend2/views/booking_view/find_shuttle_view.dart';
-import 'package:frontend2/views/booking_view/payment_confirmation.dart';
 import '../../utils/appbar_styles.dart';
-
+import '../../utils/card_styles.dart';
+import '../../utils/detailed_card_styles.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Intergalactic',
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
@@ -29,17 +29,6 @@ class MyApp extends StatelessWidget {
           error: const Color(0xffFF5A5A),
           onError: Colors.white,
           brightness: Brightness.dark,
-        ),
-
-        // app bar
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          titleTextStyle: TextStyle(
-              fontFamily: 'Space Grotesk',
-              fontSize: 24,
-              fontWeight: FontWeight.bold),
-          toolbarHeight: 100,
         ),
 
         // typography
@@ -108,15 +97,8 @@ class MyApp extends StatelessWidget {
           ),
         )),
 
-        // cards
-        cardTheme: CardTheme(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
-          ),
-          elevation: 0,
-          margin: const EdgeInsets.all(10),
-          color: const Color(0xff1F2933).withOpacity(0.6),
-        ),
+        // card theme
+        cardTheme: CustomCardTheme.customCardTheme,
 
         //   bottom app bar
         bottomAppBarTheme: const BottomAppBarTheme(
@@ -177,11 +159,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // app bar
-      appBar: AppBar(
-        title: Text(widget.title),
-        //   add notification icon
-      ),
+      appBar: const CustomAppBar(title: 'Home'),
       body: SingleChildScrollView(
         child: Column(children: [
           //   body
@@ -211,32 +189,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => FindShuttleView()),
+                            builder: (context) => Billing()),
                       );
                     },
-                    child: const Text('PAY >'),
+                    child: const Text('BILLING >'),
                   ),
 
-                  //   card
-                  const Card(
-                    child: Column(
-                      children: [
-                        Text('Card Title'),
-                        Text('Card Subtitle'),
-                        //   card inside card
-                        Card(
-                          child: Column(
-                            children: [
-                              Text('Card Title'),
-                              Text('Card Subtitle'),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  DetailedCardTheme.createTripDetailsCard('12:30', '10/12', '00:30', '12/12', '12:30', '21/12', '00:30', '19/12', 'ISI', 'MD1'),
 
-                  // horizontal scroll with cards
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
@@ -258,7 +218,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       'assets/images/travels/mars-olympus.jpg'),
                                 ),
                                 Padding(
-                                    padding: EdgeInsets.only(
+                                    padding: const EdgeInsets.only(
                                         top: 16, left: 20, bottom: 0, right: 0),
                                     child: Align(
                                       alignment: Alignment.bottomLeft,
@@ -270,7 +230,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                     )),
                                 Padding(
-                                    padding: EdgeInsets.only(
+                                    padding: const EdgeInsets.only(
                                         top: 0, left: 20, bottom: 0, right: 0),
                                     child: Align(
                                       alignment: Alignment.bottomLeft,
@@ -282,7 +242,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                     )),
                                 Padding(
-                                  padding: EdgeInsets.only(
+                                  padding: const EdgeInsets.only(
                                       right: 10, bottom: 10, top: 0),
                                   child: Align(
                                     alignment: Alignment.bottomRight,
@@ -320,7 +280,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       'assets/images/travels/mercury-north.jpg'),
                                 ),
                                 Padding(
-                                    padding: EdgeInsets.only(
+                                    padding: const EdgeInsets.only(
                                         top: 16, left: 20, bottom: 0, right: 0),
                                     child: Align(
                                       alignment: Alignment.bottomLeft,
@@ -332,7 +292,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                     )),
                                 Padding(
-                                    padding: EdgeInsets.only(
+                                    padding: const EdgeInsets.only(
                                         top: 0, left: 20, bottom: 0, right: 0),
                                     child: Align(
                                       alignment: Alignment.bottomLeft,
@@ -344,7 +304,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                     )),
                                 Padding(
-                                  padding: EdgeInsets.only(
+                                  padding: const EdgeInsets.only(
                                       right: 10, bottom: 10, top: 0),
                                   child: Align(
                                     alignment: Alignment.bottomRight,
@@ -543,35 +503,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ]),
       ),
-
-      //   bottom navigation bar
-      // bottomNavigationBar: BottomAppBar(
-      //   child: Row(
-      //     mainAxisAlignment: MainAxisAlignment.spaceAround,
-      //     children: [
-      //       IconButton(
-      //         onPressed: () {},
-      //         icon: const Icon(Icons.home),
-      //       ),
-      //       IconButton(
-      //         onPressed: () {},
-      //         icon: const Icon(Icons.search),
-      //       ),
-      //       IconButton(
-      //         onPressed: () {},
-      //         icon: const Icon(Icons.add),
-      //       ),
-      //       IconButton(
-      //         onPressed: () {},
-      //         icon: const Icon(Icons.notifications),
-      //       ),
-      //       IconButton(
-      //         onPressed: () {},
-      //         icon: const Icon(Icons.person),
-      //       ),
-      //     ],
-      //   ),
-      // ),
     );
   }
 }

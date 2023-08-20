@@ -24,7 +24,7 @@ class CustomCardTheme extends CardTheme {
         color: color,
       );
 
-  static CardTheme get customButtonTheme {
+  static CardTheme get customCardTheme {
     return CardTheme(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
