@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import '../../models/destination.dart';
+import '../../services/destination_service.dart';
 import '../../utils/appbar_styles.dart';
 import '../../utils/datepicker_styles.dart';
 import '../../utils/dropdown_button_styles.dart';
@@ -17,132 +19,160 @@ class _FindShuttleViewState extends State<FindShuttleView>
     with SingleTickerProviderStateMixin {
   bool value = false;
 
+  late Future<List<Destination>> _destinations;
+
   @override
   void initState() {
     super.initState();
+    _destinations = DestinationService.getDestinations();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: CustomAppBar(title: 'Find Shuttle'),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    const Text('From',
-                        style: TextStyle(fontWeight: FontWeight.bold)),
-                    CustomDropdownButtonFormField(dropdownValue: 'Dog'),
-                    CustomDropdownButtonFormField(dropdownValue: 'Dog')
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
-                      child: Text('To',
-                          style: TextStyle(fontWeight: FontWeight.bold)),
-                    ),
-                    CustomDropdownButtonFormField(dropdownValue: 'Dog'),
-                    CustomDropdownButtonFormField(dropdownValue: 'Dog')
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(15, 20, 0, 0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    const Text('Return Trip',
-                        style: TextStyle(fontWeight: FontWeight.bold)),
-                    Checkbox(
-                      value: this.value,
-                      onChanged: (bool? value) {
-                        setState(() {
-                          this.value = value!;
-                        });
-                      },
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Departure',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.left,
+    return FutureBuilder<List<Destination>>(
+        future: _destinations,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            print('waiting');
+            return const SizedBox(
+              height: 10.0,
+              width: 10.0,
+              child: Center(
+                  child: CircularProgressIndicator(
+                    //   color
+                    color: Color.fromARGB(255, 220, 104, 145),
+                  )),
+            );
+          } else if (snapshot.hasError) {
+            print('error');
+            return Text('Error: ${snapshot.error}');
+          } else if (snapshot.hasData) {
+            print('data');
+            final destinations = snapshot.data!;
+            return  Scaffold(
+                appBar: CustomAppBar(title: 'Find Shuttle'),
+                body: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            const Text('From',
+                                style: TextStyle(fontWeight: FontWeight.bold)),
+                            CustomDropdownButtonFormField(dropdownValue: destinations[0].name??"",dropdownItems: destinations.map((destination) => destination.name??"").toList()),
+                            CustomDropdownButtonFormField(dropdownValue: 'Dog',dropdownItems: ['Dog','Cat','Bird']),
+                          ],
                         ),
-                        CustomTextFormField()
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Return',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.left,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                              child: Text('To',
+                                  style: TextStyle(fontWeight: FontWeight.bold)),
+                            ),
+                            CustomDropdownButtonFormField(dropdownValue: destinations[0].name??"",dropdownItems: destinations.map((destination) => destination.name??"").toList()),
+                            CustomDropdownButtonFormField(dropdownValue: 'Earth',dropdownItems: destinations.map((destination) => destination.name??"").toList()),
+                          ],
                         ),
-                        CustomTextFormField()
-                      ],
-                    )
-                  ],
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.fromLTRB(15, 20, 15, 0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Adults',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.left,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(15, 20, 0, 0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            const Text('Return Trip',
+                                style: TextStyle(fontWeight: FontWeight.bold)),
+                            Checkbox(
+                              value: this.value,
+                              onChanged: (bool? value) {
+                                setState(() {
+                                  this.value = value!;
+                                });
+                              },
+                            ),
+                          ],
                         ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          child: TextFieldTapRegionExample(),
-                        )
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Children',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.left,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Departure',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                  textAlign: TextAlign.left,
+                                ),
+                                CustomTextFormField()
+                              ],
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Return',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                  textAlign: TextAlign.left,
+                                ),
+                                CustomTextFormField()
+                              ],
+                            )
+                          ],
                         ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          child: TextFieldTapRegionExample(),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.fromLTRB(15, 20, 15, 0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Adults',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                  textAlign: TextAlign.left,
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                                  child: TextFieldTapRegionExample(),
+                                )
+                              ],
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Children',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                  textAlign: TextAlign.left,
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                                  child: TextFieldTapRegionExample(),
+                                ),
+                              ],
+                            )
+                          ],
                         ),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-            ],
-          ),
-        )); // Pass a String here
+                      ),
+                    ],
+                  ),
+                ));
+          }
+          else {
+            return const Text("No data");
+          }
+        });
   }
 }
 
