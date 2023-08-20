@@ -4,7 +4,7 @@ import '../utils/routes.dart';
 import 'package:http/http.dart' as http;
 
 class BookingService {
-  Future<Booking> getBooking(String id) async {
+  static Future<Booking> getBooking(String id) async {
     try {
       var response = await http.get(
         Uri.parse(getRoute("Booking/$id")),
@@ -21,7 +21,7 @@ class BookingService {
     }
   }
 
-  Future<List<Booking>> findUserBooking(String userId) async {
+  static Future<List<Booking>> findUserBooking(String userId) async {
     try {
       var response = await http.get(
         Uri.parse(getRoute("Booking/user/$userId")),
@@ -42,7 +42,7 @@ class BookingService {
     }
   }
 
-  Future<void> deleteBooking(String id) async {
+  static Future<void> deleteBooking(String id) async {
     try {
       var response = await http.delete(
         Uri.parse(getRoute("Booking/$id")),
@@ -57,7 +57,7 @@ class BookingService {
     }
   }
 
-  Future<void> updateBooking(String key, dynamic value, String id) async {
+  static Future<void> updateBooking(String key, dynamic value, String id) async {
     try {
       var response = await http.patch(
         Uri.parse(getRoute("Booking/$id")),

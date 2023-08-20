@@ -5,10 +5,10 @@ import 'local_service.dart';
 
 class UserService {
 
-  Future<bool> login(username, password) async {
+  static Future<bool> login(username, password) async {
     Map<String, dynamic> data = {
       'username': username,
-      'password': password,
+      'password': password
     };
 
     String body = json.encode(data);
