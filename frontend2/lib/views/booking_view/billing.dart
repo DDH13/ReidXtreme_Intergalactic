@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:frontend2/views/booking_view/payment_confirmation.dart';
 import 'package:frontend2/views/booking_view/payment.dart';
+import 'package:frontend2/views/booking_view/available_shuttles.dart';
 import '../../utils/background_image.dart'; // Import the BackgroundImage component
 import '../../utils/appbar_styles.dart';
 import '../../utils/text_styles.dart';
@@ -69,7 +69,7 @@ class _BillingState extends State<Billing> with SingleTickerProviderStateMixin {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => PaymentConfirmation(),
+                          builder: (context) => Payment(),
                         ),
                       );
                     },
@@ -83,7 +83,7 @@ class _BillingState extends State<Billing> with SingleTickerProviderStateMixin {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Payment(),
+                          builder: (context) => AvailableShuttles(),
                         ),
                       );
                     },

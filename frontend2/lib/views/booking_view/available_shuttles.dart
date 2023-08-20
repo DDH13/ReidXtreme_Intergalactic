@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:frontend2/views/booking_view/payment_confirmation.dart';
 import 'package:frontend2/views/booking_view/payment.dart';
-import 'package:frontend2/views/booking_view/billing.dart';
 import '../../utils/background_image.dart'; // Import the BackgroundImage component
 import '../../utils/appbar_styles.dart';
-import '../../utils/text_styles.dart';
 
 class AvailableShuttles extends StatefulWidget {
   AvailableShuttles({Key? key}) : super(key: key);

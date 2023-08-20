@@ -23,7 +23,9 @@ class _PaymentState extends State<Payment>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Payment Methods'),
+      appBar: const CustomAppBar(
+          title: 'Payment Methods',
+      ),
       body: Stack(
         children: [
           BackgroundImage(),
@@ -38,14 +40,7 @@ class _PaymentState extends State<Payment>
                   child: Padding(
                     padding: const EdgeInsets.only(right: 40.0), // Adjust this value
                     child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Billing(),
-                          ),
-                        );
-                      },
+                      onPressed: () {},
                       child: const Text('+ ADD METHOD'),
                     ),
                   ),
