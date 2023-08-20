@@ -64,7 +64,6 @@ class Booking {
 
   static Map<String, dynamic> toJson(Booking booking) {
     return {
-      'id': booking.id,
       'source': booking.source,
       'destination': booking.destination,
       'sourceDock': booking.sourceDock,

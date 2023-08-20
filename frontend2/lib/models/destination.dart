@@ -19,7 +19,7 @@ class Destination{
       name: jsonDecode['name'],
       description: jsonDecode['description'],
       image: jsonDecode['image'],
-      docks: jsonDecode['docks'],
+      docks: jsonDecode['docks'].cast<String>(),
     );
   }
 
