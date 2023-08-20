@@ -4,17 +4,37 @@ import 'package:frontend2/views/booking_view/payment_confirmation.dart';
 import '../../utils/background_image.dart'; // Import the BackgroundImage component
 import '../../utils/appbar_styles.dart';
 
-
-
 class Payment extends StatefulWidget {
-  Payment({Key? key}) : super(key: key);
+  final String sourceDock;
+  final String destination;
+  final String destDock;
+  final String source;
+  final DateTime departureDate;
+  final DateTime arrivalDate;
+  final int adults;
+  final int children;
+  final String shuttle;
+  final double total;
+
+  Payment(
+      {Key? key,
+      required this.destination,
+      required this.destDock,
+      required this.source,
+      required this.sourceDock,
+      required this.departureDate,
+      required this.arrivalDate,
+      required this.adults,
+      required this.children,
+      required this.shuttle,
+      required this.total})
+      : super(key: key);
 
   @override
   _PaymentState createState() => _PaymentState();
 }
 
-class _PaymentState extends State<Payment>
-    with SingleTickerProviderStateMixin {
+class _PaymentState extends State<Payment> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
@@ -24,7 +44,7 @@ class _PaymentState extends State<Payment>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(
-          title: 'Payment Methods',
+        title: 'Payment Methods',
       ),
       body: Stack(
         children: [
@@ -38,7 +58,8 @@ class _PaymentState extends State<Payment>
                 Align(
                   alignment: Alignment.centerRight,
                   child: Padding(
-                    padding: const EdgeInsets.only(right: 40.0), // Adjust this value
+                    padding: const EdgeInsets.only(right: 40.0),
+                    // Adjust this value
                     child: ElevatedButton(
                       onPressed: () {},
                       child: const Text('+ ADD METHOD'),
@@ -52,7 +73,18 @@ class _PaymentState extends State<Payment>
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Billing(),
+                        builder: (context) => Billing(
+                          destination: widget.destination,
+                          destDock: widget.destDock,
+                          source: widget.source,
+                          sourceDock: widget.sourceDock,
+                          departureDate: widget.departureDate,
+                          arrivalDate: widget.arrivalDate,
+                          adults: widget.adults,
+                          children: widget.children,
+                          shuttle: widget.shuttle,
+                          total: widget.total,
+                        ),
                       ),
                     );
                   },
@@ -77,10 +109,4 @@ class _PaymentState extends State<Payment>
       ),
     );
   }
-
-
-
-
 }
-
-
