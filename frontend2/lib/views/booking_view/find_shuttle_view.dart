@@ -1,13 +1,14 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
+import 'package:frontend2/views/booking_view/available_shuttles.dart';
 import 'package:flutter/material.dart';
+import '../../utils/background_image.dart';
 import '../../utils/appbar_styles.dart';
 import '../../utils/datepicker_styles.dart';
 import '../../utils/dropdown_button_styles.dart';
 import '../../utils/textbox_increment_styles.dart';
+import '../../utils/elevated_button_styles.dart';
 
 class FindShuttleView extends StatefulWidget {
-  FindShuttleView({Key? key}) : super(key: key);
+  const FindShuttleView({Key? key}) : super(key: key);
 
   @override
   _FindShuttleViewState createState() => _FindShuttleViewState();
@@ -26,126 +27,143 @@ class _FindShuttleViewState extends State<FindShuttleView>
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: CustomAppBar(title: 'Find Shuttle'),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    const Text('From',
-                        style: TextStyle(fontWeight: FontWeight.bold)),
-                    CustomDropdownButtonFormField(dropdownValue: 'Dog'),
-                    CustomDropdownButtonFormField(dropdownValue: 'Dog')
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
-                      child: Text('To',
+        body: Stack(
+          children: [
+            BackgroundImage(),
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      const Text('From',
                           style: TextStyle(fontWeight: FontWeight.bold)),
-                    ),
-                    CustomDropdownButtonFormField(dropdownValue: 'Dog'),
-                    CustomDropdownButtonFormField(dropdownValue: 'Dog')
-                  ],
+                      CustomDropdownButtonFormField(dropdownValue: 'Dog'),
+                      CustomDropdownButtonFormField(dropdownValue: 'Dog')
+                    ],
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(15, 20, 0, 0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    const Text('Return Trip',
-                        style: TextStyle(fontWeight: FontWeight.bold)),
-                    Checkbox(
-                      value: this.value,
-                      onChanged: (bool? value) {
-                        setState(() {
-                          this.value = value!;
-                        });
-                      },
-                    ),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                        child: Text('To',
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                      ),
+                      CustomDropdownButtonFormField(dropdownValue: 'Dog'),
+                      CustomDropdownButtonFormField(dropdownValue: 'Dog')
+                    ],
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Departure',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.left,
-                        ),
-                        CustomTextFormField()
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Return',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.left,
-                        ),
-                        CustomTextFormField()
-                      ],
-                    )
-                  ],
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(15, 20, 0, 0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      const Text('Return Trip',
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      Checkbox(
+                        value: this.value,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            this.value = value!;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              const Padding(
-                padding: EdgeInsets.fromLTRB(15, 20, 15, 0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Adults',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.left,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          child: TextFieldTapRegionExample(),
-                        )
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Children',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.left,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                          child: TextFieldTapRegionExample(),
-                        ),
-                      ],
-                    )
-                  ],
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Departure',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.left,
+                          ),
+                          CustomTextFormField()
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Return',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.left,
+                          ),
+                          CustomTextFormField()
+                        ],
+                      )
+                    ],
+                  ),
                 ),
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(15, 20, 15, 0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Adults',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.left,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            child: TextFieldTapRegionExample(),
+                          )
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Children',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.left,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                            child: TextFieldTapRegionExample(),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: ElevatedButton(
+                style: CustomElevatedButtonTheme.customButtonTheme.style,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AvailableShuttles(),
+                    ),
+                  );
+                },
+                child: const Text('FIND A SHUTTLE >'),
               ),
-            ],
-          ),
-        )); // Pass a String here
+            ),
+          ],
+        ));
   }
 }
-
 
 // class Month1 extends StatelessWidget {
 //   Month1({Key? key}) : super(key: key);

@@ -195,7 +195,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: const Text('BILLING >'),
                   ),
 
-                  DetailedCardTheme.createTripDetailsCard('12:30', '10/12', '00:30', '12/12', '12:30', '21/12', '00:30', '19/12', 'ISI', 'MD1'),
+                  DetailedCardTheme.createTripDetailsCard('12:30', '10/12', '00:30', '12/12', '12:30', '21/12', '00:30', '19/12', 'ISI', 'MD1', 200, 50, 86, 200),
 
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,

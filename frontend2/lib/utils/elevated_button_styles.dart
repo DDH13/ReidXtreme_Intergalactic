@@ -7,19 +7,19 @@ class CustomElevatedButtonTheme extends ElevatedButtonThemeData {
         backgroundColor: MaterialStateProperty.resolveWith<Color>(
               (states) {
             if (states.contains(MaterialState.pressed)) {
-              return Colors.red; // Change to desired pressed color
+              return Colors.grey; // Change to desired pressed color
             }
-            return Colors.blue; // Change to desired default color
+            return Colors.black; // Change to desired default color
           },
         ),
         side: MaterialStateProperty.all<BorderSide>(
-          BorderSide(
+          const BorderSide(
             color: Colors.white,
             width: 0.7,
           ),
         ),
         foregroundColor: MaterialStateProperty.all<Color>(
-          Colors.black, // Change to desired foreground color
+          Colors.white, // Change to desired foreground color
         ),
         padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
           const EdgeInsets.symmetric(
