@@ -4,6 +4,7 @@ import 'package:frontend2/views/booking_view/payment.dart';
 import '../../utils/background_image.dart'; // Import the BackgroundImage component
 import '../../utils/appbar_styles.dart';
 import '../../utils/text_styles.dart';
+import '../../utils/detailed_card_styles.dart';
 
 class Billing extends StatefulWidget {
   Billing({Key? key}) : super(key: key);
@@ -21,58 +22,73 @@ class _BillingState extends State<Billing> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Billing Details'),
+      appBar: const CustomAppBar(title: 'Billing Details'),
       body: Stack(
         children: [
-          BackgroundImage(),
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                SizedBox(height: 20),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 20.0, left:20.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'SpaceX MK1',
-                          style: ThemeText.bodyLarge,
-                        ),
-                        Text(
-                          '23R12',
-                          style: ThemeText.bodyLarge,
-                        ),
-                      ],
-                    ),
+          const BackgroundImage(),
+          // Center(
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              const SizedBox(height: 20),
+              const Align(
+                alignment: Alignment.centerRight,
+                child: Padding(
+                  padding: EdgeInsets.only(right: 20.0, left: 20.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'SpaceX MK1',
+                        style: ThemeText.bodyLarge,
+                      ),
+                      Text(
+                        '23R12',
+                        style: ThemeText.bodyLarge,
+                      ),
+                    ],
                   ),
                 ),
-                SizedBox(height: 120),
-                SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => PaymentConfirmation(),
-                      ),
-                    );
-                  },
-                  child: const Text('< CHANGE SHUTTLE'),
+              ),
+              const SizedBox(height: 20),
+              // add trip details here
+              DetailedCardTheme.createDetailedCard('12:30', '10/12', '00:30',
+                  '12/12', '12:30', '21/12', '00:30', '19/12', 'ISI', 'MD1'),
+            ],
+          ),
+
+          // proceed to payment button
+          Positioned(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => PaymentConfirmation(),
+                        ),
+                      );
+                    },
+                    child: const Text('PROCEED TO PAYMENT >'),
+                  ),
                 ),
-                SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Payment(),
-                      ),
-                    );
-                  },
-                  child: const Text('PROCEED TO PAYMENT >'),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Payment(),
+                        ),
+                      );
+                    },
+                    child: const Text('< CHANGE SHUTTLE'),
+                  ),
                 ),
               ],
             ),

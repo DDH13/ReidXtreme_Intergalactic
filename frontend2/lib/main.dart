@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:frontend2/views/booking_view/billing.dart';
 import 'package:frontend2/views/booking_view/find_shuttle_view.dart';
-import 'package:frontend2/views/booking_view/payment_confirmation.dart';
-// import 'package:frontend2/views/booking_view/payment.dart';
 import '../../utils/appbar_styles.dart';
 import '../../utils/card_styles.dart';
 import '../../utils/detailed_card_styles.dart';
@@ -142,7 +141,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Home'),
+      appBar: const CustomAppBar(title: 'Home'),
       body: SingleChildScrollView(
         child: Column(children: [
           //   body
@@ -172,10 +171,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => PaymentConfirmation()),
+                            builder: (context) => Billing()),
                       );
                     },
-                    child: const Text('PAY >'),
+                    child: const Text('BILLING >'),
                   ),
 
                   DetailedCardTheme.createDetailedCard('12:30', '10/12', '00:30', '12/12', '12:30', '21/12', '00:30', '19/12', 'ISI', 'MD1'),
