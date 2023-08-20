@@ -75,4 +75,27 @@ class BookingService {
       throw Exception('Something went wrong');
     }
   }
+
+  static Future<void> createBooking(Booking booking) async {
+    try {
+      print(Booking.toJson(booking));
+      var response = await http.post(
+        Uri.parse(getRoute("Booking")),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode(Booking.toJson(booking)),
+      );
+
+      if (response.statusCode == 204) {
+        print(response.body);
+        return;
+      }
+      else {
+        print(response.body);
+        throw Exception('Failed to create booking');
+      }
+    } catch (e) {
+      print(e);
+      throw Exception('Something went wrong');
+    }
+  }
 }
