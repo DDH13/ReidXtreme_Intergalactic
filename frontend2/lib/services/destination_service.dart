@@ -4,7 +4,7 @@ import '../utils/routes.dart';
 import 'package:http/http.dart' as http;
 
 class DestinationService {
-  Future<Destination> getDestination(String id) async {
+  static Future<Destination> getDestination(String id) async {
     try {
       var response = await http.get(
         Uri.parse(getRoute("Destination/$id")),
@@ -21,7 +21,7 @@ class DestinationService {
     }
   }
 
-  Future<List<Destination>> getDestinations() async {
+  static Future<List<Destination>> getDestinations() async {
     try {
       var response = await http.get(
         Uri.parse(getRoute("Destination")),
@@ -42,7 +42,7 @@ class DestinationService {
     }
   }
 
-  Future<List<String>> getDestinationDocks(String id) async {
+  static Future<List<String>> getDestinationDocks(String id) async {
     try {
       var response = await http.get(
         Uri.parse(getRoute("Destination/docks/$id")),

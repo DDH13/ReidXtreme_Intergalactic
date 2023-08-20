@@ -5,7 +5,7 @@ import '../utils/routes.dart';
 import 'package:http/http.dart' as http;
 
 class TripService {
-  Future<Trip> getTrip(String id) async {
+  static Future<Trip> getTrip(String id) async {
     try {
       var response = await http.get(
         Uri.parse(getRoute("Trip/$id")),
@@ -22,7 +22,7 @@ class TripService {
     }
   }
 
-  Future<List<Trip>> findTrip(
+  static Future<List<Trip>> findTrip(
       String sourceId, String destId, DateTime departure) async {
     try {
       var response = await http.get(
@@ -45,7 +45,7 @@ class TripService {
     }
   }
 
-  Future<List<Trip>> findReturnTrip(
+  static Future<List<Trip>> findReturnTrip(
       String sourceId, String destId, DateTime arrival) async {
     try {
       var response = await http.get(
@@ -68,7 +68,7 @@ class TripService {
     }
   }
 
-  Future<List<Trip>> getTripsBySource(String source) async {
+  static Future<List<Trip>> getTripsBySource(String source) async {
     try {
       var response = await http.get(
         Uri.parse(getRoute("Trip/source?source=$source")),
@@ -89,7 +89,7 @@ class TripService {
     }
   }
 
-  Future<List<Trip>> getTripsByDestination(String destination) async {
+  static Future<List<Trip>> getTripsByDestination(String destination) async {
     try {
       var response = await http.get(
         Uri.parse(getRoute("Trip/destination?destination=$destination")),
@@ -110,7 +110,7 @@ class TripService {
     }
   }
 
-  Future<List<Trip>> getTripsBySourceAndDestination(
+  static Future<List<Trip>> getTripsBySourceAndDestination(
       String source, String destination) async {
     try {
       var response = await http.get(
@@ -133,7 +133,7 @@ class TripService {
     }
   }
 
-  Future<List<Trip>> getTripsByDepartureDate(
+  static Future<List<Trip>> getTripsByDepartureDate(
       DateTime departure1, DateTime departure2) async {
     try {
       var response = await http.get(
@@ -156,7 +156,7 @@ class TripService {
     }
   }
 
-  Future<Double> getCost(String id, int adults, int children) async {
+  static Future<Double> getCost(String id, int adults, int children) async {
     try {
       var response = await http.get(
         Uri.parse(
@@ -174,7 +174,7 @@ class TripService {
     }
   }
 
-  Future<Double> getDistance(String source, String destination) async {
+  static Future<Double> getDistance(String source, String destination) async {
     try {
       var response = await http.get(
         Uri.parse(getRoute("Trip/distance/$source/$destination")),
