@@ -57,6 +57,7 @@ class BookingService {
     }
   }
 
+  //Call this -> updateBooking("status", "cancelled", "64df73fa7bbda70fb14c5289");
   static Future<void> updateBooking(String key, dynamic value, String id) async {
     try {
       var response = await http.patch(

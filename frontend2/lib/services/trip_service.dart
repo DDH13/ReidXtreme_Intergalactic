@@ -1,9 +1,9 @@
 import 'dart:convert';
-import 'dart:ffi';
 import '../models/trip.dart';
 import '../utils/routes.dart';
 import 'package:http/http.dart' as http;
 
+//use DateTime.parse("2023-08-19") to convert string to DateTime before passing to functions
 class TripService {
   static Future<Trip> getTrip(String id) async {
     try {
@@ -156,16 +156,18 @@ class TripService {
     }
   }
 
-  static Future<Double> getCost(String id, int adults, int children) async {
+  static Future<double> getCost(String id, int adults, int children) async {
     try {
       var response = await http.get(
         Uri.parse(
-            getRoute("Trip/cost?id=$id&adults=$adults&children=$children")),
+            getRoute("Trip/cost/$id?adults=$adults&children=$children")),
         headers: {'Content-Type': 'application/json'},
       );
 
       if (response.statusCode == 200) {
-        return json.decode(response.body);
+        final dynamic decodedResponse = json.decode(response.body);
+        final double cost = decodedResponse as double;
+        return Future.value(cost);
       } else {
         throw Exception('Failed to find cost');
       }
@@ -174,7 +176,7 @@ class TripService {
     }
   }
 
-  static Future<Double> getDistance(String source, String destination) async {
+  static Future<double> getDistance(String source, String destination) async {
     try {
       var response = await http.get(
         Uri.parse(getRoute("Trip/distance/$source/$destination")),
@@ -182,7 +184,9 @@ class TripService {
       );
 
       if (response.statusCode == 200) {
-        return json.decode(response.body);
+        final dynamic decodedResponse = json.decode(response.body);
+        final double distance = decodedResponse as double;
+        return Future.value(distance);
       } else {
         throw Exception('Failed to find distance');
       }
@@ -190,4 +194,5 @@ class TripService {
       throw Exception('Something went wrong');
     }
   }
+
 }
