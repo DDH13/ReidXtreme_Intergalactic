@@ -1,9 +1,10 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:frontend2/views/booking_view/find_shuttle_view.dart';
 import 'package:frontend2/views/booking_view/payment_confirmation.dart';
-import 'package:frontend2/views/booking_view/payment.dart';
+// import 'package:frontend2/views/booking_view/payment.dart';
 import '../../utils/appbar_styles.dart';
+import '../../utils/card_styles.dart';
+import '../../utils/detailed_card_styles.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,17 +30,6 @@ class MyApp extends StatelessWidget {
           error: const Color(0xffFF5A5A),
           onError: Colors.white,
           brightness: Brightness.dark,
-        ),
-
-        // app bar
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          titleTextStyle: TextStyle(
-              fontFamily: 'Space Grotesk',
-              fontSize: 24,
-              fontWeight: FontWeight.bold),
-          toolbarHeight: 100,
         ),
 
         // typography
@@ -108,15 +98,8 @@ class MyApp extends StatelessWidget {
           ),
         )),
 
-        // cards
-        cardTheme: CardTheme(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
-          ),
-          elevation: 0,
-          margin: const EdgeInsets.all(10),
-          color: const Color(0xff1F2933).withOpacity(0.6),
-        ),
+        // card theme
+        cardTheme: CustomCardTheme.customCardTheme,
 
         //   bottom app bar
         bottomAppBarTheme: const BottomAppBarTheme(
@@ -189,174 +172,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-<<<<<<< Updated upstream
                             builder: (context) => PaymentConfirmation()),
-=======
-                            builder: (context) =>
-                                Payment()),
->>>>>>> Stashed changes
                       );
                     },
                     child: const Text('PAY >'),
                   ),
 
-                  // Card(
-                  //   clipBehavior: Clip.antiAlias,
-                  //   shape: const RoundedRectangleBorder(
-                  //     borderRadius: BorderRadius.all(
-                  //       Radius.circular(16),
-                  //     ),
-                  //   ),
-                  //   // width
-                  //   child: SizedBox(
-                  //     // screen width
-                  //     width: MediaQuery.of(context).size.width,
-                  //     child: Column(
-                  //       children: [
-                  //         Padding(
-                  //             padding: EdgeInsets.only(
-                  //                 top: 16, left: 20, bottom: 0, right: 0),
-                  //             child: Align(
-                  //               alignment: Alignment.bottomLeft,
-                  //               child: Text(
-                  //                 'SpaceX MK1',
-                  //                 style: Theme.of(context).textTheme.bodyLarge,
-                  //               ),
-                  //             )),
-                  //         Padding(
-                  //             padding: const EdgeInsets.only(
-                  //                 top: 0, left: 20, bottom: 0, right: 0),
-                  //             child: Align(
-                  //               alignment: Alignment.bottomLeft,
-                  //               child: Text(
-                  //                 'FIRST CLASS',
-                  //                 style: Theme.of(context).textTheme.bodySmall,
-                  //               ),
-                  //             )),
-                  //         // positioned background image
-                  //         Padding(
-                  //           padding: const EdgeInsets.only(right: 10, bottom: 0),
-                  //           child: Align(
-                  //             alignment: Alignment.bottomRight,
-                  //             child: ElevatedButton(
-                  //               onPressed: () {
-                  //                 Navigator.push(
-                  //                   context,
-                  //                   MaterialPageRoute(
-                  //                       builder: (context) =>
-                  //                           FindShuttleView()),
-                  //                 );
-                  //               },
-                  //               child: const Text('VIEW >'),
-                  //             ),
-                  //           ),
-                  //         ),
-                  //         Stack(
-                  //           children: [
-                  //             Container(
-                  //               height: 150,
-                  //               decoration: const BoxDecoration(
-                  //                 image: DecorationImage(
-                  //                   image: AssetImage(
-                  //                       'assets/images/planets/mars.png'),
-                  //                   fit: BoxFit.fitWidth,
-                  //                     alignment: FractionalOffset.topLeft
-                  //                 ),
-                  //
-                  //               ),
-                  //             ),
-                  //           ],
-                  //         ),
-                  //       ],
-                  //     ),
-                  //   ),
-                  // ),
+                  DetailedCardTheme.createDetailedCard('12:30', '10/12', '00:30', '12/12', '12:30', '21/12', '00:30', '19/12', 'ISI', 'MD1'),
 
-
-                  // trip details card for Billing Details page
-                  Card(
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(color: Colors.white70, width: 1),
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(top:16.0, bottom:16.0),
-                      child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        // trip
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              '00:30\n10/12',
-                              style: Theme.of(context).textTheme.bodySmall,
-                              textAlign: TextAlign.center,
-                            ),
-                            //   image
-                            SizedBox.fromSize(
-                              size: const Size(200, 50),
-                              child: Image.asset(
-                                'assets/images/depart.png',
-                                fit: BoxFit.fitWidth,
-                              ),
-                            ),
-                            Text(
-                              '12:30\n12/12',
-                              style: Theme.of(context).textTheme.bodySmall,
-                              textAlign: TextAlign.center,
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            const SizedBox(width: 86),
-                            SizedBox.fromSize(
-                              size: const Size(200, 32),
-                              child: ElevatedButton(
-                                onPressed: null,
-                                child: Text(
-                                  'ISI              -              MD1',
-                                  style: Theme.of(context).textTheme.bodySmall,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                        // return trip
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              '12:30\n21/12',
-                              style: Theme.of(context).textTheme.bodySmall,
-                              textAlign: TextAlign.center,
-                            ),
-                            //   image
-                            SizedBox.fromSize(
-                              size: const Size(200, 50),
-                              // rotate image
-                              child: Transform.rotate(
-                                angle: 3.14,
-                                child: Image.asset(
-                                  'assets/images/depart.png',
-                                  fit: BoxFit.fitWidth,
-                                ),
-                              ),
-                            ),
-                            Text(
-                              '00:30\n19/12',
-                              style: Theme.of(context).textTheme.bodySmall,
-                              textAlign: TextAlign.center,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    ),
-                  ),
-
-                  // horizontal scroll with cards
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
@@ -378,7 +201,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       'assets/images/travels/mars-olympus.jpg'),
                                 ),
                                 Padding(
-                                    padding: EdgeInsets.only(
+                                    padding: const EdgeInsets.only(
                                         top: 16, left: 20, bottom: 0, right: 0),
                                     child: Align(
                                       alignment: Alignment.bottomLeft,
@@ -390,7 +213,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                     )),
                                 Padding(
-                                    padding: EdgeInsets.only(
+                                    padding: const EdgeInsets.only(
                                         top: 0, left: 20, bottom: 0, right: 0),
                                     child: Align(
                                       alignment: Alignment.bottomLeft,
@@ -402,7 +225,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                     )),
                                 Padding(
-                                  padding: EdgeInsets.only(
+                                  padding: const EdgeInsets.only(
                                       right: 10, bottom: 10, top: 0),
                                   child: Align(
                                     alignment: Alignment.bottomRight,
@@ -440,7 +263,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       'assets/images/travels/mercury-north.jpg'),
                                 ),
                                 Padding(
-                                    padding: EdgeInsets.only(
+                                    padding: const EdgeInsets.only(
                                         top: 16, left: 20, bottom: 0, right: 0),
                                     child: Align(
                                       alignment: Alignment.bottomLeft,
@@ -452,7 +275,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                     )),
                                 Padding(
-                                    padding: EdgeInsets.only(
+                                    padding: const EdgeInsets.only(
                                         top: 0, left: 20, bottom: 0, right: 0),
                                     child: Align(
                                       alignment: Alignment.bottomLeft,
@@ -464,7 +287,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                     )),
                                 Padding(
-                                  padding: EdgeInsets.only(
+                                  padding: const EdgeInsets.only(
                                       right: 10, bottom: 10, top: 0),
                                   child: Align(
                                     alignment: Alignment.bottomRight,

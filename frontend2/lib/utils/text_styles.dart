@@ -18,4 +18,12 @@ abstract class ThemeText {
     fontSize: 18,
     fontWeight: FontWeight.bold,
   );
+
+  static const TextStyle bodyMedium = TextStyle(
+    fontFamily: 'Saira',
+    fontSize: 16,
+  );
+
+  static const TextStyle bodySmall =
+      TextStyle(fontFamily: 'Saira', fontSize: 14, color: Color(0xffCBCBCB));
 }
