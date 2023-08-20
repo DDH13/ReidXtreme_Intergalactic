@@ -9,7 +9,7 @@ class CustomElevatedButtonTheme extends ElevatedButtonThemeData {
             if (states.contains(MaterialState.pressed)) {
               return Colors.grey; // Change to desired pressed color
             }
-            return Colors.black; // Change to desired default color
+            return Colors.transparent; // Change to desired default color
           },
         ),
         side: MaterialStateProperty.all<BorderSide>(

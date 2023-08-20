@@ -126,202 +126,37 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                   ),
-                  DetailedCardTheme.createTripDetailsCard('12:30', '10/12', '00:30', '12/12', '12:30', '21/12', '00:30', '19/12', 'ISI', 'MD1', 200, 50, 86, 200),
+                  DetailedCardTheme.createTrendingActivityCard('Sunset Viewing', 'Mercury - station alpha', 'EXPLORE', 'assets/images/events/sunset.jpg'),
 
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
-                        Card(
-                          clipBehavior: Clip.antiAlias,
-                          shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(16),
-                            ),
-                          ),
-                          // width
-                          child: SizedBox(
-                            width: 200,
-                            child: Column(
-                              children: [
-                                const Image(
-                                  image: AssetImage(
-                                      'assets/images/travels/mars-olympus.jpg'),
-                                ),
-                                Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 16, left: 20, bottom: 0, right: 0),
-                                    child: Align(
-                                      alignment: Alignment.bottomLeft,
-                                      child: Text(
-                                        'Card Title',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyLarge,
-                                      ),
-                                    )),
-                                Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 0, left: 20, bottom: 0, right: 0),
-                                    child: Align(
-                                      alignment: Alignment.bottomLeft,
-                                      child: Text(
-                                        'Subtitle',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodySmall,
-                                      ),
-                                    )),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      right: 10, bottom: 10, top: 0),
-                                  child: Align(
-                                    alignment: Alignment.bottomRight,
-                                    child: ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  FindShuttleView()),
-                                        );
-                                      },
-                                      child: const Text('BOOK >'),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        Card(
-                          clipBehavior: Clip.antiAlias,
-                          shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(16),
-                            ),
-                          ),
-                          // width
-                          child: SizedBox(
-                            width: 200,
-                            child: Column(
-                              children: [
-                                const Image(
-                                  image: AssetImage(
-                                      'assets/images/travels/mercury-north.jpg'),
-                                ),
-                                Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 16, left: 20, bottom: 0, right: 0),
-                                    child: Align(
-                                      alignment: Alignment.bottomLeft,
-                                      child: Text(
-                                        'Card Title',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyLarge,
-                                      ),
-                                    )),
-                                Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 0, left: 20, bottom: 0, right: 0),
-                                    child: Align(
-                                      alignment: Alignment.bottomLeft,
-                                      child: Text(
-                                        'Subtitle',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodySmall,
-                                      ),
-                                    )),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      right: 10, bottom: 10, top: 0),
-                                  child: Align(
-                                    alignment: Alignment.bottomRight,
-                                    child: ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  FindShuttleView()),
-                                        );
-                                      },
-                                      child: const Text('BOOK >'),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        Card(
-                          clipBehavior: Clip.antiAlias,
-                          shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(16),
-                            ),
-                          ),
-                          // width
-                          child: SizedBox(
-                            width: 200,
-                            child: Column(
-                              children: [
-                                const Image(
-                                  image: AssetImage(
-                                      'assets/images/travels/pluto-blue-glacier.jpg'),
-                                ),
-                                Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 16, left: 20, bottom: 0, right: 0),
-                                    child: Align(
-                                      alignment: Alignment.bottomLeft,
-                                      child: Text(
-                                        'Card Title',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyLarge,
-                                      ),
-                                    )),
-                                Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 0, left: 20, bottom: 0, right: 0),
-                                    child: Align(
-                                      alignment: Alignment.bottomLeft,
-                                      child: Text(
-                                        'Subtitle',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodySmall,
-                                      ),
-                                    )),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      right: 10, bottom: 10, top: 0),
-                                  child: Align(
-                                    alignment: Alignment.bottomRight,
-                                    child: ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  FindShuttleView()),
-                                        );
-                                      },
-                                      child: const Text('BOOK >'),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
+                        DetailedCardTheme.createFrequentActivityCard('Mars-Olympus', 'travelSubtitle', 'assets/images/travels/mars-olympus.jpg'),
+                        DetailedCardTheme.createFrequentActivityCard('Mercury North', 'travelSubtitle', 'assets/images/travels/mercury-north.jpg'),
+                        DetailedCardTheme.createFrequentActivityCard('Pluto Blue Glacier', 'travelSubtitle', 'assets/images/travels/pluto-blue-glacier.jpg'),
                       ],
                     ),
                   ),
 
+                  // elevated fond shuttle button
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        top: 20, left: 20, bottom: 0, right: 0),
+                    child: Align(
+                      alignment: Alignment.bottomLeft,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const FindShuttleView()),
+                          );
+                        },
+                        child: const Text('FIND SHUTTLE'),
+                      ),
+                    ),
+                  ),
                   // horizontal scroll with cards
                   const SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
