@@ -69,8 +69,12 @@ flutter:
   fonts:
     - family: Saira
       fonts:
-        - asset: assets/fonts/Saira-Regular.ttf
-
+        - asset: assets/fonts/saira/Saira-Regular.ttf
+        - asset: assets/fonts/saira/Saira-Bold.ttf
+    - family: Space Grotesk
+      fonts:
+        - asset: assets/fonts/space-grotesk/SpaceGrotesk-Regular.ttf
+        - asset: assets/fonts/space-grotesk/SpaceGrotesk-Bold.ttf
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

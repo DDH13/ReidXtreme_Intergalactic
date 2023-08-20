@@ -26,7 +26,6 @@ class _BillingState extends State<Billing> with SingleTickerProviderStateMixin {
       body: Stack(
         children: [
           const BackgroundImage(),
-          // Center(
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
