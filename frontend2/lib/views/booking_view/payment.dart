@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:frontend2/views/booking_view/billing.dart';
 import 'package:frontend2/views/booking_view/payment_confirmation.dart';
+import '../../models/booking.dart';
+import '../../services/booking_service.dart';
 import '../../utils/background_image.dart'; // Import the BackgroundImage component
 import '../../utils/appbar_styles.dart';
 
 class Payment extends StatefulWidget {
+  final String user = "64df64566e6cbb5db24c7842";
   final String sourceDock;
   final String destination;
   final String destDock;
@@ -93,6 +96,22 @@ class _PaymentState extends State<Payment> with SingleTickerProviderStateMixin {
                 SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
+                    BookingService.createBooking(Booking(
+                      user: widget.user,
+                      source: widget.source,
+                      destination: widget.destination,
+                      shuttle: widget.shuttle,
+                      sourceDock: widget.sourceDock,
+                      destinationDock: widget.destDock,
+                      departure: widget.departureDate,
+                      arrival: widget.arrivalDate,
+                      adults: widget.adults,
+                      children: widget.children,
+                      total: widget.total,
+                      discount: 0,
+                      price: 0,
+                      paid: true,
+                    ));
                     Navigator.push(
                       context,
                       MaterialPageRoute(

@@ -209,8 +209,8 @@ class _FindShuttleViewState extends State<FindShuttleView>
                                     builder: (context) =>
                                         AvailableShuttles(
                                           destination:"64df749e7bbda70fb14fc712",
-                                          destDock:"",
-                                          sourceDock:"",
+                                          destDock:"dock1",
+                                          sourceDock:"dock2",
                                           arrivalDate: DateTime.now(),
                                           departureDate: DateTime.parse("2023-08-19"),
                                           adults:3,

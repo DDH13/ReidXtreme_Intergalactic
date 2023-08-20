@@ -149,8 +149,9 @@ class _AvailableShuttlesState extends State<AvailableShuttles>
                               trip.arrival!
                                   .difference(trip.departure!)
                                   .toString(),
-                              'IS1',
-                              'MD1',
+                              trip.sourceDock ?? "",
+                              // 'MD1',
+                              trip.destinationDock ?? "",
                               '1',
                               '2',
                               // '50,000',

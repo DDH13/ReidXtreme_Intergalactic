@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:frontend2/services/booking_service.dart';
 import 'package:frontend2/views/booking_view/find_shuttle_view.dart';
 import 'package:frontend2/views/booking_view/payment.dart';
-import '../../models/booking.dart';
 import '../../utils/background_image.dart'; // Import the BackgroundImage component
 import '../../utils/appbar_styles.dart';
 import '../../utils/text_styles.dart';
@@ -122,22 +120,6 @@ class _BillingState extends State<Billing> with SingleTickerProviderStateMixin {
                           ),
                         ),
                       );
-                      BookingService.createBooking(Booking(
-                        user: widget.user,
-                        source: widget.source,
-                        destination: widget.destination,
-                        shuttle: widget.shuttle,
-                        sourceDock: widget.sourceDock,
-                        destinationDock: widget.destDock,
-                        departure: widget.departureDate,
-                        arrival: widget.arrivalDate,
-                        adults: widget.adults,
-                        children: widget.children,
-                        total: widget.total,
-                        discount: 0,
-                        price: 0,
-                        paid: false,
-                      ));
                     },
                     child: const Text('PROCEED TO PAYMENT >'),
                   ),
