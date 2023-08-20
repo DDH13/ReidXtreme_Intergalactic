@@ -1,0 +1,13 @@
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+appsettings.json
+/.idea/.idea.intergalactica/.idea/.gitignore
+/.idea/.idea.intergalactica/.idea/.name
+/.idea/.idea.intergalactica/.idea/encodings.xml
+/.idea/.idea.intergalactica/.idea/git_toolbox_prj.xml
+/.idea/.idea.intergalactica/.idea/indexLayout.xml
+/.idea/.idea.intergalactica/.idea/vcs.xml
+/.idea/config/applicationhost.config
