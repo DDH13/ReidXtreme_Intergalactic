@@ -63,6 +63,9 @@ class Booking {
   }
 
   static Map<String, dynamic> toJson(Booking booking) {
+    //if departure return and arrival return are null, set them to minimum date
+    booking.departureReturn ??= DateTime.parse("0001-01-01T00:00:00.000Z");
+    booking.arrivalReturn ??= DateTime.parse("0001-01-01T00:00:00.000Z");
     return {
       'source': booking.source,
       'destination': booking.destination,
