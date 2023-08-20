@@ -17,11 +17,12 @@ public class BookingController : ControllerBase
     }
 
     [HttpGet("{id}", Name = "GetBooking")]
-    public ActionResult<IEnumerable<Booking>> Get()
+    public ActionResult<Booking> Get(string id)
     {
         try
         {
-            return Ok(_bookingService.Get());
+            var booking = _bookingService.Get(id);
+            return booking;
         } catch (Exception e)
         {
             return BadRequest(e.Message);
@@ -34,8 +35,7 @@ public class BookingController : ControllerBase
         try
         {
             return Ok(_bookingService.GetByUser(userId));
-        }
-        catch (Exception e)
+        } catch (Exception e)
         {
             return BadRequest(e.Message);
         }
