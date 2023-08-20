@@ -397,6 +397,5 @@ class DetailedCardTheme extends CustomCardTheme {
         )
       ),
     );
-
-}
+  }
 }
