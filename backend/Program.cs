@@ -6,6 +6,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MongoDB.Driver;
+using Serilog;
 using Swashbuckle.AspNetCore.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -54,12 +55,17 @@ builder.Services.AddSingleton<IAtlasDbSettings>(sp =>
     sp.GetRequiredService<IOptions<AtlasDbSettings>>().Value);
 builder.Services.AddSingleton<IMongoClient>(_ =>
     new MongoClient(builder.Configuration.GetValue<string>("AtlasDbSettings:ConnectionString")));
-builder.Services.AddControllers().AddNewtonsoftJson().AddXmlDataContractSerializerFormatters();
+builder.Services.AddControllers(option => { option.ReturnHttpNotAcceptable = false; }
+).AddNewtonsoftJson().AddXmlDataContractSerializerFormatters();
 builder.Services.AddHttpContextAccessor();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .CreateLogger();
+builder.Host.UseSerilog();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -69,10 +75,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseSerilogRequestLogging();
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();
