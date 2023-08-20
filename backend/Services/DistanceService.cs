@@ -19,7 +19,10 @@ public class DistanceService
     {
         var distance = _distances.Find(distance => distance.Source == source && distance.Destination == destination).FirstOrDefault() ??
                        _distances.Find(distance => distance.Source == destination && distance.Destination == source).FirstOrDefault();
-
+        if (distance == null)
+        {
+            throw new Exception("Distance not found");
+        }
         return distance;
     }
 
