@@ -80,7 +80,7 @@ class BookingService {
     try {
       print(Booking.toJson(booking));
       var response = await http.post(
-        Uri.parse(getRoute("Booking")),
+        Uri.parse(getRoute("Booking/add")),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode(Booking.toJson(booking)),
       );
