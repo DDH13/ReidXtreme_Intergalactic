@@ -104,37 +104,42 @@ class _FindShuttleViewState extends State<FindShuttleView>
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(15, 20, 15, 0),
+              const Padding(
+                padding: EdgeInsets.fromLTRB(15, 20, 15, 0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
+                        Text(
                           'Adults',
                           style: TextStyle(fontWeight: FontWeight.bold),
                           textAlign: TextAlign.left,
                         ),
-                        CustomTextFormField()
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                          child: TextFieldTapRegionExample(),
+                        )
                       ],
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
+                        Text(
                           'Children',
                           style: TextStyle(fontWeight: FontWeight.bold),
                           textAlign: TextAlign.left,
                         ),
-                        CustomTextFormField(),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                          child: TextFieldTapRegionExample(),
+                        ),
                       ],
                     )
                   ],
                 ),
               ),
-              // const TextFieldTapRegionExample()
             ],
           ),
         )); // Pass a String here
