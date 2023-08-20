@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:frontend2/views/booking_view/billing.dart';
 import 'package:frontend2/views/booking_view/payment_confirmation.dart';
+import 'package:frontend2/views/booking_view/payment.dart';
 import '../../utils/background_image.dart'; // Import the BackgroundImage component
 import '../../utils/appbar_styles.dart';
+import '../../utils/text_styles.dart';
 
-
-
-class Payment extends StatefulWidget {
-  Payment({Key? key}) : super(key: key);
+class Billing extends StatefulWidget {
+  Billing({Key? key}) : super(key: key);
 
   @override
-  _PaymentState createState() => _PaymentState();
+  _BillingState createState() => _BillingState();
 }
 
-class _PaymentState extends State<Payment>
-    with SingleTickerProviderStateMixin {
+class _BillingState extends State<Billing> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
@@ -23,30 +21,31 @@ class _PaymentState extends State<Payment>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Payment Methods'),
+      appBar: CustomAppBar(title: 'Billing Details'),
       body: Stack(
         children: [
           BackgroundImage(),
           Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                Image.asset('assets/images/payment/card.png'),
                 SizedBox(height: 20),
                 Align(
                   alignment: Alignment.centerRight,
                   child: Padding(
-                    padding: const EdgeInsets.only(right: 40.0), // Adjust this value
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Billing(),
-                          ),
-                        );
-                      },
-                      child: const Text('+ ADD METHOD'),
+                    padding: const EdgeInsets.only(right: 20.0, left:20.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'SpaceX MK1',
+                          style: ThemeText.bodyLarge,
+                        ),
+                        Text(
+                          '23R12',
+                          style: ThemeText.bodyLarge,
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -57,11 +56,11 @@ class _PaymentState extends State<Payment>
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Billing(),
+                        builder: (context) => PaymentConfirmation(),
                       ),
                     );
                   },
-                  child: const Text('< BACK TO BILLING'),
+                  child: const Text('< CHANGE SHUTTLE'),
                 ),
                 SizedBox(height: 20),
                 ElevatedButton(
@@ -69,11 +68,11 @@ class _PaymentState extends State<Payment>
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => PaymentConfirmation(),
+                        builder: (context) => Payment(),
                       ),
                     );
                   },
-                  child: const Text('CONFIRM MY TRIP >'),
+                  child: const Text('PROCEED TO PAYMENT >'),
                 ),
               ],
             ),
@@ -82,10 +81,4 @@ class _PaymentState extends State<Payment>
       ),
     );
   }
-
-
-
-
 }
-
-
