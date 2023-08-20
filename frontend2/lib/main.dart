@@ -194,76 +194,159 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: const Text('PAY >'),
                   ),
 
-                  // card with image
+                  // Card(
+                  //   clipBehavior: Clip.antiAlias,
+                  //   shape: const RoundedRectangleBorder(
+                  //     borderRadius: BorderRadius.all(
+                  //       Radius.circular(16),
+                  //     ),
+                  //   ),
+                  //   // width
+                  //   child: SizedBox(
+                  //     // screen width
+                  //     width: MediaQuery.of(context).size.width,
+                  //     child: Column(
+                  //       children: [
+                  //         Padding(
+                  //             padding: EdgeInsets.only(
+                  //                 top: 16, left: 20, bottom: 0, right: 0),
+                  //             child: Align(
+                  //               alignment: Alignment.bottomLeft,
+                  //               child: Text(
+                  //                 'SpaceX MK1',
+                  //                 style: Theme.of(context).textTheme.bodyLarge,
+                  //               ),
+                  //             )),
+                  //         Padding(
+                  //             padding: const EdgeInsets.only(
+                  //                 top: 0, left: 20, bottom: 0, right: 0),
+                  //             child: Align(
+                  //               alignment: Alignment.bottomLeft,
+                  //               child: Text(
+                  //                 'FIRST CLASS',
+                  //                 style: Theme.of(context).textTheme.bodySmall,
+                  //               ),
+                  //             )),
+                  //         // positioned background image
+                  //         Padding(
+                  //           padding: const EdgeInsets.only(right: 10, bottom: 0),
+                  //           child: Align(
+                  //             alignment: Alignment.bottomRight,
+                  //             child: ElevatedButton(
+                  //               onPressed: () {
+                  //                 Navigator.push(
+                  //                   context,
+                  //                   MaterialPageRoute(
+                  //                       builder: (context) =>
+                  //                           FindShuttleView()),
+                  //                 );
+                  //               },
+                  //               child: const Text('VIEW >'),
+                  //             ),
+                  //           ),
+                  //         ),
+                  //         Stack(
+                  //           children: [
+                  //             Container(
+                  //               height: 150,
+                  //               decoration: const BoxDecoration(
+                  //                 image: DecorationImage(
+                  //                   image: AssetImage(
+                  //                       'assets/images/planets/mars.png'),
+                  //                   fit: BoxFit.fitWidth,
+                  //                     alignment: FractionalOffset.topLeft
+                  //                 ),
+                  //
+                  //               ),
+                  //             ),
+                  //           ],
+                  //         ),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
+
+
+                  // trip details card for Billing Details page
                   Card(
-                    clipBehavior: Clip.antiAlias,
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(16),
-                      ),
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(color: Colors.white70, width: 1),
+                      borderRadius: BorderRadius.circular(16),
                     ),
-                    // width
-                    child: SizedBox(
-                      // screen width
-                      width: MediaQuery.of(context).size.width,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top:16.0, bottom:16.0),
                       child: Column(
-                        children: [
-                          Padding(
-                              padding: EdgeInsets.only(
-                                  top: 16, left: 20, bottom: 0, right: 0),
-                              child: Align(
-                                alignment: Alignment.bottomLeft,
-                                child: Text(
-                                  'SpaceX MK1',
-                                  style: Theme.of(context).textTheme.bodyLarge,
-                                ),
-                              )),
-                          Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 0, left: 20, bottom: 0, right: 0),
-                              child: Align(
-                                alignment: Alignment.bottomLeft,
-                                child: Text(
-                                  'FIRST CLASS',
-                                  style: Theme.of(context).textTheme.bodySmall,
-                                ),
-                              )),
-                          // positioned background image
-                          Padding(
-                            padding: const EdgeInsets.only(right: 10, bottom: 0),
-                            child: Align(
-                              alignment: Alignment.bottomRight,
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            FindShuttleView()),
-                                  );
-                                },
-                                child: const Text('VIEW >'),
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // trip
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(
+                              '00:30\n10/12',
+                              style: Theme.of(context).textTheme.bodySmall,
+                              textAlign: TextAlign.center,
+                            ),
+                            //   image
+                            SizedBox.fromSize(
+                              size: const Size(200, 50),
+                              child: Image.asset(
+                                'assets/images/depart.png',
+                                fit: BoxFit.fitWidth,
                               ),
                             ),
-                          ),
-                          Stack(
-                            children: [
-                              Container(
-                                height: 150,
-                                decoration: const BoxDecoration(
-                                  image: DecorationImage(
-                                    image: AssetImage(
-                                        'assets/images/planets/mars.png'),
-                                    fit: BoxFit.fitWidth,
-                                      alignment: FractionalOffset.topLeft
-                                  ),
-
+                            Text(
+                              '12:30\n12/12',
+                              style: Theme.of(context).textTheme.bodySmall,
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            const SizedBox(width: 86),
+                            SizedBox.fromSize(
+                              size: const Size(200, 32),
+                              child: ElevatedButton(
+                                onPressed: null,
+                                child: Text(
+                                  'ISI              -              MD1',
+                                  style: Theme.of(context).textTheme.bodySmall,
                                 ),
                               ),
-                            ],
-                          ),
-                        ],
-                      ),
+                            ),
+                          ],
+                        ),
+                        // return trip
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(
+                              '12:30\n21/12',
+                              style: Theme.of(context).textTheme.bodySmall,
+                              textAlign: TextAlign.center,
+                            ),
+                            //   image
+                            SizedBox.fromSize(
+                              size: const Size(200, 50),
+                              // rotate image
+                              child: Transform.rotate(
+                                angle: 3.14,
+                                child: Image.asset(
+                                  'assets/images/depart.png',
+                                  fit: BoxFit.fitWidth,
+                                ),
+                              ),
+                            ),
+                            Text(
+                              '00:30\n19/12',
+                              style: Theme.of(context).textTheme.bodySmall,
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                     ),
                   ),
 
