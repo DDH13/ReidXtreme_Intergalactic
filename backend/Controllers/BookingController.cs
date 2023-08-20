@@ -18,16 +18,29 @@ public class BookingController : ControllerBase
 
 
     [HttpGet("{id}", Name = "GetBooking")]
-    public ActionResult<IEnumerable<Booking>> Get()
+    public ActionResult<Booking> Get(string id)
     {
-        return Ok(_bookingService.Get());
+        try
+        {
+            var booking = _bookingService.Get(id);
+            return booking;
+        } catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
     }
 
 
     [HttpGet("user/{userId}")]
     public ActionResult<IEnumerable<Booking>> GetUserBookings(string userId)
     {
-        return Ok(_bookingService.GetByUser(userId));
+        try
+        {
+            return Ok(_bookingService.GetByUser(userId));
+        } catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
     }
 
     [HttpPost("add")]
@@ -37,7 +50,14 @@ public class BookingController : ControllerBase
         return NoContent();
     }
 
-    [HttpPatch]
+    [HttpDelete("{id}")]
+    public ActionResult DeleteBooking(string id)
+    {
+        _bookingService.Remove(id);
+        return NoContent();
+    }
+
+    [HttpPatch("{id}", Name = "PatchBooking")]
     public ActionResult PatchBooking(string id, [FromBody] JsonPatchDocument<Booking> patchDoc)
     {
         if (patchDoc == null)
@@ -51,10 +71,14 @@ public class BookingController : ControllerBase
             return NotFound();
         }
 
-        patchDoc.ApplyTo(booking);
+        patchDoc.ApplyTo(booking, ModelState);
 
         _bookingService.Update(id, booking);
-        return NoContent();
-    }
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
 
+        return Ok();
+    }
 }

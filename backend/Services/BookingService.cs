@@ -6,7 +6,6 @@ namespace intergalactica.Services;
 
 public class BookingService
 {
-
     private readonly IMongoCollection<Booking> _bookings;
 
     public BookingService(IAtlasDbSettings settings, IMongoClient client)
@@ -18,13 +17,30 @@ public class BookingService
     public List<Booking> Get() =>
         _bookings.Find(booking => true).ToList();
 
-    public Booking Get(string id) =>
-        _bookings.Find(booking => booking.Id == id).FirstOrDefault();
+    public Booking Get(string id)
+    {
+        var booking = _bookings.Find(booking => booking.Id == id).FirstOrDefault();
+        if (booking == null)
+        {
+            throw new Exception("Booking not found");
+        }
 
-    public List<Booking> GetByUser(string userId) =>
-        _bookings.Find(booking => booking.User == userId).ToList();
+        return booking;
+    }
 
-    public Booking Create(Booking booking) {
+    public List<Booking> GetByUser(string userId)
+    {
+        var bookings = _bookings.Find(booking => booking.User == userId).ToList();
+        if (bookings.Count == 0)
+        {
+            throw new Exception("No bookings found");
+        }
+
+        return bookings;
+    }
+
+    public Booking Create(Booking booking)
+    {
         _bookings.InsertOne(booking);
         return booking;
     }
@@ -34,5 +50,4 @@ public class BookingService
 
     public void Remove(string id) =>
         _bookings.DeleteOne(booking => booking.Id == id);
-
 }

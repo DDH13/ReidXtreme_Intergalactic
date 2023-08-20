@@ -17,32 +17,25 @@ class _TextFieldTapRegionExampleState extends State<TextFieldTapRegionExample> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: <Widget>[
-        Center(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: SizedBox(
-              width: 150,
-              height: 80,
-              child: IntegerSpinnerField(
-                value: value,
-                autofocus: true,
-                onChanged: (int newValue) {
-                  if (value == newValue) {
-                    // Avoid unnecessary redraws.
-                    return;
-                  }
-                  setState(() {
-                    // Update the value and redraw.
-                    value = newValue;
-                  });
-                },
-              ),
-            ),
-          ),
+    return Center(
+      child: SizedBox(
+        width: 150,
+        height: 40,
+        child: IntegerSpinnerField(
+          value: value,
+          autofocus: true,
+          onChanged: (int newValue) {
+            if (value == newValue) {
+              // Avoid unnecessary redraws.
+              return;
+            }
+            setState(() {
+              // Update the value and redraw.
+              value = newValue;
+            });
+          },
         ),
-      ],
+      ),
     );
   }
 }
@@ -192,20 +185,52 @@ class _SpinnerFieldState<T> extends State<SpinnerField<T>> {
       },
       child: Row(
         children: <Widget>[
+          TextFieldTapRegion(
+            // height: 20,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Expanded(
+                  child: OutlinedButton(
+                    // width: 20,
+                    style: OutlinedButton.styleFrom(
+                      side: BorderSide.none,
+                      minimumSize: Size.zero, // Set this
+                      padding: EdgeInsets.zero, // and this
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                    ),
+                    onPressed: _increment,
+                    child: const Icon(Icons.add),
+                  ),
+                ),
+                // Expanded(
+                //   child: OutlinedButton(
+                //     onPressed: _decrement,
+                //     child: const Icon(Icons.remove),
+                //   ),
+                // ),
+              ],
+            ),
+          ),
           Expanded(
             child: TextField(
               autofocus: widget.autofocus,
               inputFormatters: widget.inputFormatters,
               decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-              ),
+                  // padding: EdgeInsets.zero,
+                  contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                  border: OutlineInputBorder(),
+                  filled: true,
+                  fillColor: Color.fromARGB(255, 31, 39, 47)),
               onChanged: (String value) =>
                   widget.onChanged?.call(widget.fromString(value)),
               controller: controller,
               textAlign: TextAlign.center,
             ),
           ),
-          const SizedBox(width: 12),
+          // const SizedBox(width: 12),
           // Without this TextFieldTapRegion, tapping on the buttons below would
           // increment the value, but it would cause the text field to be
           // unfocused, since tapping outside of a text field should unfocus it
@@ -214,14 +239,19 @@ class _SpinnerFieldState<T> extends State<SpinnerField<T>> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
+                // Expanded(
+                //   child: OutlinedButton(
+                //     onPressed: _increment,
+                //     child: const Icon(Icons.add),
+                //   ),
+                // ),
                 Expanded(
                   child: OutlinedButton(
-                    onPressed: _increment,
-                    child: const Icon(Icons.add),
-                  ),
-                ),
-                Expanded(
-                  child: OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      side: BorderSide.none,
+                      minimumSize: Size.zero, // Set this
+                      padding: EdgeInsets.zero, // and this
+                    ),
                     onPressed: _decrement,
                     child: const Icon(Icons.remove),
                   ),
