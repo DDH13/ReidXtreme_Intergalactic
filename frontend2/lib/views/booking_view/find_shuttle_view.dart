@@ -102,6 +102,7 @@ class _FindShuttleViewState extends State<FindShuttleView>
                                 destination.name == 'Saturn')
                                     .docks ??
                                     ['']),
+
                           ],
                         ),
                       ),
@@ -227,6 +228,7 @@ class _FindShuttleViewState extends State<FindShuttleView>
                   ),
                 ));
           } else {
+
             return const Text("No data");
           }
         });

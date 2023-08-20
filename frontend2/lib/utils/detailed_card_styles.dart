@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../utils/card_styles.dart';
 import '../../utils/text_styles.dart';
+import '../../utils/elevated_button_styles.dart';
 
 class DetailedCardTheme extends CustomCardTheme {
   static CardTheme get detailedCardTheme {
@@ -51,6 +52,7 @@ class DetailedCardTheme extends CustomCardTheme {
                   style: ThemeText.bodySmall,
                   textAlign: TextAlign.center,
                 ),
+                // border radius
                 SizedBox.fromSize(
                   size: Size(imageWidth, imageHeight),
                   child: Image.asset(
@@ -377,7 +379,7 @@ class DetailedCardTheme extends CustomCardTheme {
                   ),
                 Column(
                   children: [
-                    Text('\n\n\n'),
+                    const Text('\n\n\n'),
                     Text(
                       '\$ $fare',
                       style: ThemeText.bodyLarge,
@@ -397,5 +399,128 @@ class DetailedCardTheme extends CustomCardTheme {
         )
       ),
     );
+  }
+
+//   method to create trending activity card
+  static Card createTrendingActivityCard(
+      String activityName,
+      String activityLocation,
+      String buttonText,
+      String imageName,
+      ){
+    return Card(
+      clipBehavior: Clip.antiAlias,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(16),
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.only(top: 16.0, bottom: 16.0, left: 10, right: 10),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // outbound trip
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SizedBox.fromSize(
+                  size: const Size(110, 110),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16),
+                    child: Image.asset(
+                      imageName,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Column(
+                  children: [
+                    Text(
+                      activityName,
+                      style: ThemeText.bodyLarge,
+                    ),
+                    Text(
+                      activityLocation,
+                      style: ThemeText.bodySmall,
+                    ),
+                    SizedBox(height: 5,),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: CustomElevatedButtonTheme.customButtonTheme.style,
+                      child: Text(buttonText),
+                    ),
+                  ]
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+      )
+    ;
+
+
+
+  }
+
+  static Card createFrequentActivityCard(
+      String travelTitle,
+      String travelSubtitle,
+      String imageName,
+      ){
+    return Card(
+      clipBehavior: Clip.antiAlias,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(16),
+        ),
+      ),
+      // width
+      child: SizedBox(
+        width: 200,
+        child: Column(
+          children: [
+            Image(
+              image: AssetImage(
+                  imageName),
+            ),
+            Padding(
+                padding: EdgeInsets.only(
+                    top: 16, left: 20, bottom: 0, right: 0),
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Text(
+                    travelTitle,
+                    style: ThemeText.bodyLarge,
+                  ),
+                )),
+            Padding(
+                padding: EdgeInsets.only(
+                    top: 0, left: 20, bottom: 0, right: 0),
+                child: Align(
+                  alignment: Alignment.bottomLeft,
+                  child: Text(
+                    travelSubtitle,
+                    style: ThemeText.bodySmall,
+                  ),
+                )),
+            Padding(
+              padding: const EdgeInsets.only(
+                  right: 10, bottom: 10, top: 0),
+              child: Align(
+                alignment: Alignment.bottomRight,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: CustomElevatedButtonTheme.customButtonTheme.style,
+                  child: const Text('BOOK >'),
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+
   }
 }
